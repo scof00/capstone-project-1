@@ -26,9 +26,7 @@ export const getAllUnsoldItems = () => {
   
   export const deleteItems = async (itemId) => {
     return fetch(`http://localhost:8088/items/${itemId}`, 
-    {method: "DELETE",
-  
-    })
+    {method: "DELETE", })
   };
   
   export const createItem = (item) => {

@@ -18,9 +18,11 @@ export const UnsoldItemsList = () => {
     getAllUnsoldItems().then((itemsArray) => setItems(itemsArray));
   }, []);
 
-  const handleDelete = () => {
-    deleteItems().then(() => {
-      getAllUnsoldItems;
+  const handleDelete = (item) => {
+    deleteItems(item.id).then(() => {
+      getAllUnsoldItems().then((array) => {
+        setItems(array)
+      });
     });
   };
 
@@ -64,7 +66,6 @@ export const UnsoldItemsList = () => {
         {filteredItems.map((item) => {
           return (
             <div className="itemContainer" key={item.id}>
-              <img src={item.image} />
               <div className="item-info-item">
                 <h3>
                   <span>
@@ -106,7 +107,7 @@ export const UnsoldItemsList = () => {
                 >
                   Buy
                 </button>
-                <button className="item-btn" onClick={handleDelete}>
+                <button className="item-btn" onClick={() => handleDelete(item)}>
                   Delete
                 </button>
               </div>
