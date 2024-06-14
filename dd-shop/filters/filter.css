@@ -1,0 +1,24 @@
+.filter-label{
+    color: white;
+}
+
+.filters{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    
+}
+
+.rarity-filter{
+    margin: 3px;
+    border-radius: 5px;
+    border: 1px #783f04 solid;
+    font-family: "luminari", sans-serif;
+}
+
+.item-search{
+    margin: 3px;
+    border-radius: 5px;
+    border: 1px #783f04 solid;
+    font-family: "luminari", sans-serif;
+}
