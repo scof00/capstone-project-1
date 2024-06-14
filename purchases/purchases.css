@@ -1,0 +1,56 @@
+body{
+    background: url(https://i.pinimg.com/originals/85/f3/e8/85f3e870ef4923d55b39f2ebc97e96ab.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.itemContainer{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    align-items: baseline;
+    background-color: rgba(255,255,255, 0.80);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+    height: fit-content;
+}
+
+.item-info-description{
+    text-align: left;
+}
+
+.item-info-item{
+    justify-content: center;
+}
+
+.container-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.item-btn{
+    font-size: 10px;
+    margin: 5px;
+}
+
+img{
+    max-width: fit-content;
+    width: 180px;
+    height: 180px;
+    border: 1px solid black;
+    border-radius: 10px;
+    align-self: center;
+    margin: 5px;
+}
+
+.items{
+    display: flex;
+}
+
+.filter-label{
+    color: white;
+}
