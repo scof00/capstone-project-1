@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRarities } from "../services/rarityservice";
+import { getRarities } from "../../services/rarityservice";
 import"./filter.css"
 
 export const Filters = ({setSearchTerm, setItemFilter, searchTerm, itemFilter}) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { changItemStatus, getAllSoldItems } from "../services/itemsService";
+import { changItemStatus, getAllSoldItems } from "../../services/itemsService";
 import "./purchases.css";
 import { Filters } from "../filters/filter";
 

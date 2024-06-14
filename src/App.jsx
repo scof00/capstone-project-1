@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import { UnsoldItemsList } from "../components/items/itemsList";
 import { Outlet, Route, Routes } from "react-router-dom";
+import { Navbar } from "../components/navbar/navbar";
+import { UnsoldItemsList } from "../components/items/itemsList";
+import { AddItems } from "../components/addItem/addItem"
+import { Purchases } from "../components/purchases/purchases";
 
 
-import { Purchases } from "../purchases/purchases";
-import { AddItems } from "../components/addItem/addItem";
-import { Navbar } from "../navbar/navbar";
+
 
 
 export const App = () => {
