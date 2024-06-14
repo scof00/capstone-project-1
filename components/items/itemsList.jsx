@@ -6,7 +6,7 @@ import {
 } from "../../services/itemsService";
 import "./items.css";
 
-import { Filters } from "../../filters/filter";
+import { Filters } from "../filters/filter";
 
 export const UnsoldItemsList = () => {
   const [items, setItems] = useState([]);

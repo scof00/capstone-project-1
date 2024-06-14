@@ -1,0 +1,26 @@
+.auth-container {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: auto;
+    background-color: #E5DFCF;
+    border-style: outset;
+    border-radius: 25px;
+    border-color: #783f04;
+    border-width: 5px;
+    font-family: 'luminari', sans-serif;
+    padding: 10px;
+}
+
+.auth-fieldset{
+    margin: 5px;
+}
+
+.auth-form-input{
+    border-radius: 5px;
+}
+
+.auth-button{
+    background: none;
+}

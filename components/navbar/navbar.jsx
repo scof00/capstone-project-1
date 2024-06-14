@@ -1,7 +1,9 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+
+  const navigate = useNavigate()
   return (
     <header>
     <ul className="navbar">
@@ -18,6 +20,16 @@ export const Navbar = () => {
       <li className="navbar-item">
         <Link to="purchases" className="navbar-item">
           See Your Purchases
+        </Link>
+      </li>
+      <li className="navbar-item">
+        <Link className="navbar-item" to=""
+        onClick={() => {
+          localStorage.removeItem("shop_user")
+          navigate("/login", {replace: true})
+        }}
+        >
+          Logout
         </Link>
       </li>
     </ul>

@@ -1,33 +1,28 @@
 import { useState } from "react";
 import "./App.css";
-import { UnsoldItemsList } from "../components/items/itemsList";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { Login } from "../components/auth/login";
+import { ApplicationViews } from "../views/applicationViews";
+import { Authorized } from "../views/Authorized";
 
 
-import { Purchases } from "../purchases/purchases";
-import { AddItems } from "../components/addItem/addItem";
-import { Navbar } from "../navbar/navbar";
+function App() {
+  const [count, setCount] = useState(0);
 
-
-export const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route
-        path="/"
+        path="*"
         element={
-          <>
-            <Navbar/>
-            <Outlet/>
-          </>
+          <Authorized>
+            <ApplicationViews />
+          </Authorized>
         }
-      >
-        {/* <Route  index element={<Welcome />}/> */}
-        <Route index path="/" element={<UnsoldItemsList />} />
-        <Route path="newItem" element={<AddItems />}/>
-        <Route path="purchases" element={<Purchases/>} />
-      </Route>
+      />
     </Routes>
-  );
+  )
 }
 
 export default App;
+
