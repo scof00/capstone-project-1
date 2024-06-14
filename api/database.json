@@ -1,111 +1,52 @@
 {
-  "users": [
+  "items": [
     {
       "id": 1,
-      "userName": "Employee",
-      "email": "employee@gmail.com",
-      "isEmployee": true
+      "name": "Potion of Healing",
+      "rarityId": 1,
+      "description": "You regain 2d4+2 hit points when you drink this potion. Drinking or administering a potion takes an action.",
+      "cost": 50,
+      "image": "https://ih1.redbubble.net/image.1305752452.7153/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg",
+      "purchased": false,
+      "rarity": {
+        "id": 1,
+        "name": "Common"
+      }
     },
     {
       "id": 2,
-      "username": "Customer",
-      "email": "customer@gmail.com",
-      "isEmployee": false
+      "name": "Potion of Climbing",
+      "rarityId": 1,
+      "description": "When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength (Athletics) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors.",
+      "cost": 50,
+      "image": "https://images.squarespace-cdn.com/content/v1/52c8e848e4b06ad2e570480f/282f3f01-eae1-46b4-a6bd-72c67e89f112/potion+of+climbing.png",
+      "purchased": false,
+      "rarity": {
+        "id": 1,
+        "name": "Common"
+      }
     }
   ],
-  "customers": [
+  "rarities": [
     {
       "id": 1,
-      "userId": 2,
-      "name": "Customer 1",
-      "address": "1 Customer Avenue"
-    }
-  ],
-  "flowers": [
-    {
-      "id": 1,
-      "name": "Carnation",
-      "species": "Dianthus caryophyllus",
-      "color": "Pink",
-      "img": "https://cdn.britannica.com/38/189538-050-6EC8A082/carnation-flowers.jpg"
+      "name": "Common"
     },
     {
       "id": 2,
-      "name": "Daisy",
-      "species": "Bellis perennis",
-      "color": "White",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Leucanthemum_vulgare_%27Filigran%27_Flower_2200px.jpg"
-    }
-  ],
-  "nurseries": [
-    {
-      "id": 1,
-      "businessName": "Honey Farms"
+      "name": "Uncommon"
     },
     {
-      "businessName": "Gritt's Farms",
-      "id": 2
-    }
-  ],
-  "nurseryFlowers": [
-    {
-      "id": 1,
-      "nurseryId": 1,
-      "flowerId": 1,
-      "cost": 5
+      "id": 3,
+      "name": "Rare"
     },
     {
-      "id": 2,
-      "nurseryId": 2,
-      "flowerId": 2,
-      "cost": 3
-    }
-  ],
-  "distributors": [
-    {
-      "id": 1,
-      "businessName": "Dan's Hands Distributing",
-      "markup": 1.1
+      "id": 4,
+      "name": "Very Rare"
     },
     {
-      "id": 2,
-      "businessName": "Egg's Legs Distributing Services",
-      "markup": 1.15
-    }
-  ],
-  "nurseryDistributors": [
-    {
-      "id": 1,
-      "distributorId": 1,
-      "nurseryId": 1
-    },
-    {
-      "id": 2,
-      "distributorId": 2,
-      "nurseryId": 2
-    }
-  ],
-  "retailers": [
-    {
-      "businessName": "Walmart",
-      "address": "1 Walmart Lane",
-      "distributorId": 1,
-      "markup": 1.2,
-      "id": 1
-    },
-    {
-      "id": 2,
-      "businessName": "Target",
-      "address": "1 Target Street",
-      "distributorId": 2,
-      "markup": 1.3
-    },
-    {
-      "businessName": "Home Depot",
-      "address": "250 Home Depot Blvd",
-      "distributorId": "1",
-      "markup": "1.05",
-      "id": 3
+      "id": 5,
+      "name": "Legendary"
     }
   ]
 }
