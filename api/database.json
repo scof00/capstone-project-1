@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "Employee",
+      "email": "employee@gmail.com",
+      "isEmployee": true
+    },
+    {
+      "id": 2,
+      "username": "Customer",
+      "email": "customer@gmail.com",
+      "isEmployee": false
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "userId": 2,
+      "name": "Customer 1",
+      "address": "1 Customer Avenue"
+    }
+  ],
+  "flowers": [
+    {
+      "id": 1,
+      "name": "Carnation",
+      "species": "Dianthus caryophyllus",
+      "color": "Pink",
+      "img": "https://cdn.britannica.com/38/189538-050-6EC8A082/carnation-flowers.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Daisy",
+      "species": "Bellis perennis",
+      "color": "White",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Leucanthemum_vulgare_%27Filigran%27_Flower_2200px.jpg"
+    }
+  ],
+  "nurseries": [
+    {
+      "id": 1,
+      "businessName": "Honey Farms"
+    },
+    {
+      "businessName": "Gritt's Farms",
+      "id": 2
+    }
+  ],
+  "nurseryFlowers": [
+    {
+      "id": 1,
+      "nurseryId": 1,
+      "flowerId": 1,
+      "cost": 5
+    },
+    {
+      "id": 2,
+      "nurseryId": 2,
+      "flowerId": 2,
+      "cost": 3
+    }
+  ],
+  "distributors": [
+    {
+      "id": 1,
+      "businessName": "Dan's Hands Distributing",
+      "markup": 1.1
+    },
+    {
+      "id": 2,
+      "businessName": "Egg's Legs Distributing Services",
+      "markup": 1.15
+    }
+  ],
+  "nurseryDistributors": [
+    {
+      "id": 1,
+      "distributorId": 1,
+      "nurseryId": 1
+    },
+    {
+      "id": 2,
+      "distributorId": 2,
+      "nurseryId": 2
+    }
+  ],
+  "retailers": [
+    {
+      "businessName": "Walmart",
+      "address": "1 Walmart Lane",
+      "distributorId": 1,
+      "markup": 1.2,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "businessName": "Target",
+      "address": "1 Target Street",
+      "distributorId": 2,
+      "markup": 1.3
+    },
+    {
+      "businessName": "Home Depot",
+      "address": "250 Home Depot Blvd",
+      "distributorId": "1",
+      "markup": "1.05",
+      "id": 3
+    }
+  ]
+}

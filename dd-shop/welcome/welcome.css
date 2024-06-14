@@ -1,9 +1,0 @@
-.welcome-container{
-    color: white;
-    display: flex;
-    flex-direction: column;
-}
-.welcome-text{
-    display: flex;
-    flex-direction: column;
-}
