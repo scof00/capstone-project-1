@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Seth",
+      "password": "DM",
+      "isAdmin": true
+    }
+  ],
   "items": [
     {
       "id": 1,
