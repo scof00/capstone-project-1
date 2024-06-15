@@ -1,6 +1,6 @@
 export const getAllUnsoldItems = () => {
     return fetch(
-      "http://localhost:8088/items?purchased=false&_expand=rarity"
+      "http://localhost:8088/items?_expand=rarity"
     ).then((res) => res.json());
   };
   
