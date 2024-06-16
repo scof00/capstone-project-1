@@ -7,8 +7,9 @@ import {
 import "./items.css";
 
 import { Filters } from "../filters/filter";
+import { Link } from "react-router-dom";
 
-export const UnsoldItemsList = () => {
+export const ItemsList = () => {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
@@ -21,7 +22,7 @@ export const UnsoldItemsList = () => {
   const handleDelete = (item) => {
     deleteItems(item.id).then(() => {
       getAllUnsoldItems().then((array) => {
-        setItems(array)
+        setItems(array);
       });
     });
   };
@@ -93,7 +94,12 @@ export const UnsoldItemsList = () => {
                 {item.cost} Gold
               </div>
               <div className="container-btns">
-                <button className="item-btn">Edit</button>
+                <button className="item-btn" onClick={() => handleDelete(item)}>
+                  Delete
+                </button>
+                <Link to={`/items/edit/${item.id}`}>
+                  <button className="item-btn">Edit</button>
+                </Link>
                 <button
                   className="item-btn"
                   onClick={(event) => {
@@ -105,10 +111,7 @@ export const UnsoldItemsList = () => {
                     });
                   }}
                 >
-                  Buy
-                </button>
-                <button className="item-btn" onClick={() => handleDelete(item)}>
-                  Delete
+                  Show
                 </button>
               </div>
             </div>

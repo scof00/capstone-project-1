@@ -1,38 +1,48 @@
 import { useEffect, useState } from "react";
-import "./addItem.css";
+import { useNavigate, useParams } from "react-router";
+import { getItemById, updateItem } from "../../services/itemsService";
 import { getRarities } from "../../services/rarityservice";
-import { useNavigate } from "react-router-dom";
-import { createItem } from "../../services/itemsService";
 
-export const AddItems = () => {
-  const [item, setItem] = useState({});
+export const EditItem = () => {
+    const [item, setItem] = useState({})
+    const [rarities, setRarities] = useState([])
+    const {itemId} = useParams()
 
-  const [rarities, setRarities] = useState([]);
+    useEffect(() => {
+        getItemById(itemId).then((data) => {
+            const itemObj = data
+            setItem(itemObj)
+        })
+    },[])
 
-  useEffect(() => {
-    getRarities().then((raritiesArray) => setRarities(raritiesArray));
-  }, []);
+    useEffect(() => {
+        getRarities().then((array) => {
+            setRarities(array)
+        })
+    }, [])
 
-  const navigate = useNavigate();
+    const navigate = useNavigate()
 
-  const handleSave = (event) => {
-    event.preventDefault();
-    const newItem = {
-      name: item.name,
-      description: item.description,
-      cost: item.cost,
-      rarityId: item.rarityId,
-      purchased: false,
-    };
-    createItem(newItem).then(() => {
-      navigate("/");
-    });
-  };
+    const handleSave = (event) => {
+        event.preventDefault()
+        const editedItem = {
+            name: item.name,
+            id: item.id,
+            description: item.description,
+            cost: item.cost,
+            rarityId: item.rarityId,
+            purchased: false
+
+        }
+        updateItem(editedItem).then(() => {
+            navigate("/")
+        })
+    }
 
   return (
     <div>
       <form className="add-item-form">
-        <h2>Add Item</h2>
+        <h2>Edit Item</h2>
         <div className="inputs">
           <fieldset>
             <div className="form-div">
@@ -41,8 +51,8 @@ export const AddItems = () => {
               <input
                 type="text"
                 required
-                placeholder="Item Name"
-                className="form-info"
+                placeholder={item.name}
+                className={"form-info"}
                 onChange={(event) => {
                   const itemCopy = { ...item };
                   itemCopy.name = event.target.value;
@@ -81,7 +91,7 @@ export const AddItems = () => {
               <input
                 type="text"
                 required
-                placeholder="Item Description"
+                placeholder={item.description}
                 className="form-info"
                 onChange={(event) => {
                   const itemCopy = { ...item };
@@ -98,7 +108,7 @@ export const AddItems = () => {
               <input
                 type="number"
                 required
-                placeholder="Item Cost (in gold)"
+                placeholder={item.cost}
                 className="form-info"
                 onChange={(event) => {
                   const itemCopy = { ...item };
@@ -110,10 +120,9 @@ export const AddItems = () => {
           </fieldset>
         </div>
         <fieldset>
-            <button className="form-btn" onClick={handleSave}>
-              Save Item
-            </button>
-          
+          <button className="form-btn" onClick={handleSave}>
+            Save Item
+          </button>
         </fieldset>
       </form>
     </div>
