@@ -21,8 +21,7 @@ export const AddItems = () => {
       name: item.name,
       description: item.description,
       cost: item.cost,
-      rarityId: item.rarityId,
-      purchased: false,
+      rarityId: item.rarityId
     };
     createItem(newItem).then(() => {
       navigate("/");

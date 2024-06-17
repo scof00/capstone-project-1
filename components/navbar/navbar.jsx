@@ -13,13 +13,23 @@ export const Navbar = () => {
         </Link>
       </li>
       <li className="navbar-item">
+        <Link to="items" className="navbar-item">
+          All Items
+        </Link>
+      </li>
+      <li className="navbar-item">
         <Link to="newItem" className="navbar-item">
           New Wares Have Arrived
         </Link>
       </li>
       <li className="navbar-item">
         <Link to="purchases" className="navbar-item">
-          See Your Purchases
+          See All Purchases
+        </Link>
+      </li>
+      <li className="navbar-item">
+        <Link to="gold" className="navbar-item">
+          Add Gold
         </Link>
       </li>
       <li className="navbar-item">

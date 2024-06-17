@@ -100,19 +100,9 @@ export const ItemsList = () => {
                 <Link to={`/items/edit/${item.id}`}>
                   <button className="item-btn">Edit</button>
                 </Link>
-                <button
-                  className="item-btn"
-                  onClick={(event) => {
-                    item.purchased = !item.purchased;
-                    changItemStatus(item).then(() => {
-                      getAllUnsoldItems().then((allItems) => {
-                        setItems(allItems);
-                      });
-                    });
-                  }}
-                >
-                  Show
-                </button>
+                <Link to={`/items/addShopItem/${item.id}`}>
+                  <button className="item-btn">Add to shop</button>
+                </Link>
               </div>
             </div>
           );

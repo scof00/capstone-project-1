@@ -4,37 +4,43 @@
       "id": 1,
       "name": "Seth",
       "password": "DM",
-      "isAdmin": true
+      "isAdmin": true,
+      "gold": 0
     },
     {
       "id": 2,
       "name": "Maddie",
       "password": "Calliope",
-      "isAdmin": false
+      "isAdmin": false,
+      "gold": 0
     },
     {
       "id": 3,
       "name": "Kaitlyn",
       "password": "Solaya",
-      "isAdmin": false
+      "isAdmin": false,
+      "gold": 0
     },
     {
       "id": 4,
       "name": "Justin",
       "password": "Sum",
-      "isAdmin": false
+      "isAdmin": false,
+      "gold": 0
     },
     {
       "id": 5,
       "name": "Will",
       "password": "Jeb",
-      "isAdmin": false
+      "isAdmin": false,
+      "gold": 0
     },
     {
       "id": 6,
       "name": "Jacob",
       "password": "Tator",
-      "isAdmin": false
+      "isAdmin": false,
+      "gold": 0
     }
   ],
   "items": [
@@ -45,7 +51,6 @@
       "description": "You regain 2d4+2 hit points when you drink this potion. Drinking or administering a potion takes an action.",
       "cost": 50,
       "image": "https://ih1.redbubble.net/image.1305752452.7153/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg",
-      "purchased": false,
       "rarity": {
         "id": 1,
         "name": "Common"
@@ -58,7 +63,6 @@
       "description": "When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength (Athletics) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors.",
       "cost": 50,
       "image": "https://images.squarespace-cdn.com/content/v1/52c8e848e4b06ad2e570480f/282f3f01-eae1-46b4-a6bd-72c67e89f112/potion+of+climbing.png",
-      "purchased": false,
       "rarity": {
         "id": 1,
         "name": "Common"
@@ -86,5 +90,7 @@
       "id": 5,
       "name": "Legendary"
     }
+  ],
+  "shopItems": [
   ]
 }
