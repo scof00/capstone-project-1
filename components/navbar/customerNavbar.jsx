@@ -12,11 +12,19 @@ export const CustomerNavbar = () => {
           Shop
         </Link>
       </li>
+      |
+      <li className="navbar-item">
+        <Link to="/" className="navbar-item">
+          Your Cart
+        </Link>
+      </li>
+      |
       <li className="navbar-item">
         <Link to="purchases" className="navbar-item">
           See Your Purchases
         </Link>
       </li>
+      |
       <li className="navbar-item">
         <Link className="navbar-item" to=""
         onClick={() => {

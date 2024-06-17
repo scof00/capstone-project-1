@@ -18,10 +18,10 @@ export const Players = () => {
         return (
           <div className="player-container">
             <h3>{user.name}</h3>
-            <p>PC name: {user.password}</p>
-            <p>Gold: {user.gold}</p>
+            <p><u>PC name:</u> {user.password}</p>
+            <p><u>Gold:</u> {user.gold}</p>
             <Link to={`${user.id}/gold`}>
-              <button>Add Gold</button>
+              <button className="player-btn">Add Gold</button>
             </Link>
           </div>
         );

@@ -68,28 +68,23 @@ export const ItemsList = () => {
           return (
             <div className="itemContainer" key={item.id}>
               <div className="item-info-item">
-                <h3>
-                  <span>
-                    <strong>Item: </strong>
-                  </span>
-                  {item.name}
-                </h3>
+                <h2>{item.name}</h2>
               </div>
               <div>
                 <span className="item-info-rarity">
-                  <strong>Rarity: </strong>{" "}
+                  <strong><u>Rarity:</u> </strong>{" "}
                 </span>
                 {item.rarity.name}
               </div>
               <div className="item-info-description">
                 <span>
-                  <strong>Description: </strong>
+                  <strong><u>Description:</u> </strong>
                 </span>
                 {item.description}
               </div>
               <div>
                 <span className="item-info-cost">
-                  <strong>Cost: </strong>
+                  <strong><u>Cost:</u> </strong>
                 </span>
                 {item.cost} Gold
               </div>
