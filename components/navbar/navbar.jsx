@@ -31,8 +31,8 @@ export const Navbar = () => {
         </Link>
       </li>|
       <li className="navbar-item">
-        <Link to="gold" className="navbar-item">
-          Add Gold
+        <Link to="players" className="navbar-item">
+          View Players
         </Link>
       </li>
       |

@@ -1,48 +1,58 @@
 import { useEffect, useState } from "react";
 import "./gold.css";
-import { getNonAdminUsers } from "../../services/userServices";
+import { addGold, getUserById } from "../../services/userServices";
+import { useNavigate, useParams } from "react-router";
 export const GoldForm = () => {
-    const [users, setUsers] = useState([])
+    const [user, setUser] = useState({})
+    const {userId} = useParams()
 
     useEffect(() => {
-        getNonAdminUsers().then((array) => {
-            setUsers(array)
+        getUserById(userId).then((data) => {
+            const userObj = data
+            setUser(userObj)
         })
     },[])
+
+    const navigate= useNavigate()
+
+    const handleSave = (event) => {
+        event.preventDefault()
+        const goldAdded ={
+            id: user.id,
+            gold: user.gold,
+            isAdmin: false,
+            name: user.name,
+            password: user.password
+        }
+        addGold(goldAdded).then(
+            navigate("/players")
+        )
+    }
 
 
   return (
     <div>
       <form className="add-gold-form">
-        <h2>Give a Player Gold</h2>
+        <h2>Give gold to {user.name}</h2>
         <div className="inputs">
-            <fieldset>
-                <div className="form-div">
-                    <label>Select Player: </label>
-                    <br></br>
-                    <select className="player-filter">
-                        <option value="0">Player</option>
-                        {users.map((user) => {
-                            return(
-                                <option key={user.id} value={user.id}>
-                                    {user.name}
-                                </option>
-                            )
-                        })}
-                    </select>
-                    
-                </div>
-            </fieldset>
             <fieldset>
                 <div className="form-div">
                 <input
                     type="number"
                     required
-                    placeholder="Amount of Gold"
+                    placeholder="Set new amount"
                     className="form-info"
+                    onChange={(event) => {
+                        const userCopy = {...user}
+                        userCopy.gold = event.target.value
+                        setUser(userCopy)
+                    }}
                     >
                     </input>
                 </div>
+            </fieldset>
+            <fieldset>
+                <button onClick={handleSave}>Add Gold</button>
             </fieldset>
         </div>
       </form>

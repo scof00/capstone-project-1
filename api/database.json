@@ -9,10 +9,10 @@
     },
     {
       "id": 2,
-      "name": "Maddie",
-      "password": "Calliope",
+      "gold": "50",
       "isAdmin": false,
-      "gold": 0
+      "name": "Maddie",
+      "password": "Calliope"
     },
     {
       "id": 3,

@@ -9,6 +9,7 @@ import { EditItem } from "../components/items/editItem";
 import { Shop } from "../components/shop/shop";
 import { AddShopItem } from "../components/shop/addShopItem";
 import { GoldForm } from "../components/gold/gold";
+import { Players } from "../components/players/players";
 
 
 
@@ -32,7 +33,8 @@ export const EmployeeViews = () => {
         <Route path="purchases" element={<Purchases/>} />
         <Route path="/" element={<Shop />} />
         <Route path="items/addShopItem/:itemId" element={<AddShopItem />} />
-        <Route path="/gold" element={<GoldForm />} />
+        <Route path="players" element={<Players /> } />
+        <Route path="players/:userId/gold" element={<GoldForm />} />
       </Route>
     </Routes>
   );
