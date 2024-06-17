@@ -3,3 +3,9 @@ export const getUserByPassword = (password) => {
       res.json()
     );
   };
+
+  export const getNonAdminUsers = () => {
+    return fetch(`http://localhost:8088/users?isAdmin=false`).then((res) =>
+      res.json()
+    );
+  }
