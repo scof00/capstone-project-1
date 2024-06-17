@@ -17,9 +17,14 @@ body{
     background-attachment: fixed;
 }
 
+.entire-shop{
+    margin-left: 8%;
+    margin-right: 2%;
+}
+
 .itemContainer{
     display: flex;
-    width: 25%;
+    width: 20%;
     flex-direction: column;
     align-items: baseline;
     background-color: rgba(255,255,255, 0.80);
@@ -28,6 +33,7 @@ body{
     margin: 5px;
     border: 1px solid black;
     height: fit-content;
+    overflow: auto;
 }
 
 .item-info-description{

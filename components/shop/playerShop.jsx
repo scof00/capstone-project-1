@@ -52,6 +52,8 @@ export const PlayerShop = () => {
 
   return (
     <>
+    <div className="entire-shop">
+
       <Filters
         setSearchTerm={setSearchTerm}
         setItemFilter={setItemFilter}
@@ -92,7 +94,7 @@ export const PlayerShop = () => {
                 {item.quantity}
               </div>
               <div className="container-btns">
-                <button className="item-btn" onClick={() => handleDelete(item)}>
+                <button className="item-btn" >
                   Add to Cart
                 </button>
               </div>
@@ -100,6 +102,7 @@ export const PlayerShop = () => {
           );
         })}
       </div>
+    </div>
     </>
   );
 };

@@ -126,6 +126,13 @@
       "itemId": 3,
       "quantity": "5",
       "id": 3
+    },
+    {
+      "name": "item 4",
+      "rarityId": "4",
+      "itemId": 4,
+      "quantity": "50",
+      "id": 4
     }
   ]
 }

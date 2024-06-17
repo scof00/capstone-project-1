@@ -17,6 +17,7 @@ body{
     border: 2px solid #783f04;
     height: fit-content;
     font-family: 'luminari', sans-serif;
+    overflow: auto;
 }
 
 .item-info-description{

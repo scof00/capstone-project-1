@@ -10,6 +10,7 @@
     border: 1px solid black;
     height: fit-content;
     font-family: 'luminari', sans-serif;
+    overflow: auto;
 }
 
 .players{
