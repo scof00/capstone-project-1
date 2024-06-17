@@ -4,12 +4,6 @@ export const getAllUnsoldItems = () => {
   );
 };
 
-export const getAllSoldItems = () => {
-  return fetch(
-    "http://localhost:8088/items?purchased=true&_expand=rarity"
-  ).then((res) => res.json());
-};
-
 export const getItemById = (item) => {
   return fetch(`http://localhost:8088/items/${item}?_expand=rarity`).then((res) =>
     res.json()

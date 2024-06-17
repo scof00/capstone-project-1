@@ -20,11 +20,9 @@ export const AddShopItem = () => {
     event.preventDefault()
     const newItem = {
         name: item.name,
-        description: item.description,
-        cost: item.cost,
         rarityId: item.rarityId,
-        quantity: item.quantity,
-        itemId: item.id
+        itemId: item.id,
+        quantity: item.quantity
       };
       AddItemToShop(newItem).then(() => {
         navigate("/");

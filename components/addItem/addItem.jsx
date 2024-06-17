@@ -24,7 +24,7 @@ export const AddItems = () => {
       rarityId: item.rarityId
     };
     createItem(newItem).then(() => {
-      navigate("/");
+      navigate("/items");
     });
   };
 

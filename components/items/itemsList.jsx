@@ -32,16 +32,16 @@ export const ItemsList = () => {
       const filtered = items.filter((item) => item.rarityId === 1);
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = items.filter((item) => item.rarityId === 2);
+      const filtered = items.filter((item) => item.rarity.id === 2);
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = items.filter((item) => item.rarityId === 3);
+      const filtered = items.filter((item) => item.rarity.id === 3);
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = items.filter((item) => item.rarityId === 4);
+      const filtered = items.filter((item) => item.rarity.id === 4);
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = items.filter((item) => item.rarityId === 5);
+      const filtered = items.filter((item) => item.rarity.id === 5);
       setFilteredItems(filtered);
     } else {
       setFilteredItems(items);

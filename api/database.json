@@ -67,6 +67,20 @@
         "id": 1,
         "name": "Common"
       }
+    },
+    {
+      "name": "New Item",
+      "description": "new",
+      "cost": "3",
+      "rarityId": "3",
+      "id": 3
+    },
+    {
+      "name": "item 4",
+      "description": "itewm",
+      "cost": "4",
+      "rarityId": "4",
+      "id": 4
     }
   ],
   "rarities": [
@@ -92,5 +106,26 @@
     }
   ],
   "shopItems": [
+    {
+      "name": "Potion of Healing",
+      "rarityId": 1,
+      "itemId": 1,
+      "quantity": "5",
+      "id": 1
+    },
+    {
+      "name": "Potion of Climbing",
+      "rarityId": 1,
+      "itemId": 2,
+      "quantity": "5",
+      "id": 2
+    },
+    {
+      "name": "New Item",
+      "rarityId": "3",
+      "itemId": 3,
+      "quantity": "5",
+      "id": 3
+    }
   ]
 }
