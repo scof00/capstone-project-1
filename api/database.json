@@ -9,7 +9,7 @@
     },
     {
       "id": 2,
-      "gold": "50",
+      "gold": 26,
       "isAdmin": false,
       "name": "Maddie",
       "password": "Calliope"
@@ -138,11 +138,6 @@
   "carts": [
     {
       "itemId": "1",
-      "userId": 2,
-      "id": 4
-    },
-    {
-      "itemId": "1",
       "userId": 3,
       "id": 6
     },
@@ -155,6 +150,21 @@
       "itemId": "4",
       "userId": 3,
       "id": 8
+    },
+    {
+      "itemId": "4",
+      "userId": 2,
+      "id": 9
+    },
+    {
+      "itemId": "4",
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "itemId": "4",
+      "userId": 2,
+      "id": 11
     }
   ],
   "purchasedItems": [
@@ -162,6 +172,36 @@
       "userId": 2,
       "itemId": "1",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "itemId": "4",
+      "id": 7
     }
   ]
 }

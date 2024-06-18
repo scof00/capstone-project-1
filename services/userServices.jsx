@@ -31,3 +31,13 @@ export const getAllUsers = () => {
     res.json()
 )
 }
+
+export const setCurrentUserGold = (user) => {
+  return fetch(`http://localhost:8088/users/${user.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+}

@@ -54,3 +54,8 @@ img{
 .filter-label{
     color: white;
 }
+
+.player-purchases{
+    display: flex;
+    flex-direction: row;
+}

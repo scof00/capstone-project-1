@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./cart.css";
 import { deleteCartItem, getCartItems, purchaseItems } from "../../services/cartService";
 import { useNavigate } from "react-router";
+import { addGold, setCurrentUserGold } from "../../services/userServices";
 
 export const Cart = ({ currentUser }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -34,6 +35,8 @@ export const Cart = ({ currentUser }) => {
 
   const navigate = useNavigate()
 
+  
+
   const handleBuy = (event) => {
     event.preventDefault()
     if (totalCost <= totalGold) {
@@ -44,7 +47,20 @@ export const Cart = ({ currentUser }) => {
             }
             purchaseItems(newItem)
         })}
-        navigate("/purchases")
+        const newPlayerTotal = totalGold - totalCost
+        const newPlayerInfo ={
+            id: currentUser.id,
+            gold: newPlayerTotal,
+            isAdmin: currentUser.isAdmin,
+            name: currentUser.name,
+            password: currentUser.password
+        }
+        setCurrentUserGold(newPlayerInfo).then(() => {
+            navigate("/purchases")
+        }).then(() => {
+            window.location.reload()
+        })
+        
         
     } else {
         alert("Insufficient Funds")

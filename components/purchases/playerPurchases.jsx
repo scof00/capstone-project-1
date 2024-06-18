@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPurchasedItems } from "../../services/cartService";
+import "./purchases.css"
 
 export const PlayerPurchases = ({ currentUser }) => {
   const [purchasedItems, setPurchasedItems] = useState([]);
@@ -17,14 +18,16 @@ export const PlayerPurchases = ({ currentUser }) => {
     );
     setFoundPurchasedItems(foundItems);
   }, [purchasedItems]);
+
+  
   return (
-    <div className="player-items">
-      <div className="item-container">
+    
+    <div className="player-purchases">
         {foundPurchasedItems.map((item) => {
           return (
             <div className="itemContainer" key={item.id}>
               <div className="item-info-item">
-                <h2>{item.item.name}</h2>
+                <h2>{item.item?.name}</h2>
               </div>
               <div>
                 <span className="item-info-rarity">
@@ -32,7 +35,7 @@ export const PlayerPurchases = ({ currentUser }) => {
                     <u>Rarity:</u>{" "}
                   </strong>{" "}
                 </span>
-                {item.item.rarity.name}
+                {item.item?.rarity?.name}
               </div>
               <div className="item-info-description">
                 <span>
@@ -40,12 +43,11 @@ export const PlayerPurchases = ({ currentUser }) => {
                     <u>Description:</u>{" "}
                   </strong>
                 </span>
-                {item.item.description}
+                {item.item?.description}
               </div>
             </div>
           );
         })}
-      </div>
     </div>
   );
 };

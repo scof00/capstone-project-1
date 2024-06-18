@@ -25,7 +25,10 @@ export const Login = () => {
           "shop_user",
           JSON.stringify({
             id: user.id,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            gold: user.gold,
+            name: user.name,
+            password: user.password
           })
         )
 
