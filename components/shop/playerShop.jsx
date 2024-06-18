@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { deleteShopItems, getShopItems } from "../../services/shopService";
+import {
+  deleteShopItems,
+  getShopItems,
+  reduceQuantity,
+} from "../../services/shopService";
 import { Filters } from "../filters/filter";
 import { AddItemToCart } from "../../services/cartService";
 
-export const PlayerShop = ({currentUser}) => {
+export const PlayerShop = ({ currentUser }) => {
   const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
@@ -43,68 +47,92 @@ export const PlayerShop = ({currentUser}) => {
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
 
-  const handleSubmit =(event) => {
-    event.preventDefault()
+  let itemQuantity = 0;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const newItem = {
       itemId: event.target.value,
-      userId: currentUser.id
+      userId: currentUser.id,
+    };
+    {
+      shopItems.map((item) => {
+        if (item.itemId === event.target.value) {
+          const editedQuantity = {
+            itemId: event.target.value,
+            quantity: item.quantity - 1,
+            rarityId: item.rarityId,
+            id: item.id,
+          };
+          reduceQuantity(editedQuantity);
+        }
+      });
     }
-    AddItemToCart(newItem)
-  }
+    AddItemToCart(newItem);
+  };
 
   return (
     <>
-    <div className="entire-shop">
-
-      <Filters
-        setSearchTerm={setSearchTerm}
-        setItemFilter={setItemFilter}
-        itemFilter={itemFilter}
-        searchTerm={searchTerm}
-      />
-      <div className="items">
-        {filteredItems.map((item) => {
-          return (
-            <div className="itemContainer" key={item.id}>
-              <div className="item-info-item">
-                <h2>
-                  {item.name}
-                </h2>
+      <div className="entire-shop">
+        <Filters
+          setSearchTerm={setSearchTerm}
+          setItemFilter={setItemFilter}
+          itemFilter={itemFilter}
+          searchTerm={searchTerm}
+        />
+        <div className="items">
+          {filteredItems.map((item) => {
+            return (
+              <div className="itemContainer" key={item.id}>
+                <div className="item-info-item">
+                  <h2>{item.name}</h2>
+                </div>
+                <div>
+                  <span className="item-info-rarity">
+                    <strong>
+                      <u>Rarity:</u>{" "}
+                    </strong>{" "}
+                  </span>
+                  {item.rarity.name}
+                </div>
+                <div className="item-info-description">
+                  <span>
+                    <strong>
+                      <u>Description:</u>{" "}
+                    </strong>
+                  </span>
+                  {item.item?.description}
+                </div>
+                <div>
+                  <span className="item-info-cost">
+                    <strong>
+                      <u>Cost:</u>{" "}
+                    </strong>
+                  </span>
+                  {item.item?.cost} Gold
+                </div>
+                <div>
+                  <span className="item-info-cost">
+                    <strong>
+                      <u>In stock:</u>{" "}
+                    </strong>
+                  </span>
+                  {item.quantity}
+                </div>
+                <div className="container-btns">
+                  <button
+                    className="item-btn"
+                    value={item.item.id}
+                    onClick={handleSubmit}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-              <div>
-                <span className="item-info-rarity">
-                  <strong><u>Rarity:</u> </strong>{" "}
-                </span>
-                {item.rarity.name}
-              </div>
-              <div className="item-info-description">
-                <span>
-                  <strong><u>Description:</u> </strong>
-                </span>
-                {item.item?.description}
-              </div>
-              <div>
-                <span className="item-info-cost">
-                  <strong><u>Cost:</u> </strong>
-                </span>
-                {item.item?.cost} Gold
-              </div>
-              <div>
-                <span className="item-info-cost">
-                  <strong><u>In stock:</u> </strong>
-                </span>
-                {item.quantity}
-              </div>
-              <div className="container-btns">
-                <button className="item-btn" value={item.item.id} onClick={handleSubmit}>
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
     </>
   );
 };

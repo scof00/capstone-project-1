@@ -9,38 +9,38 @@
     },
     {
       "id": 2,
-      "gold": 38,
+      "gold": "500",
       "isAdmin": false,
       "name": "Maddie",
       "password": "Calliope"
     },
     {
       "id": 3,
-      "name": "Kaitlyn",
-      "password": "Solaya",
+      "gold": 421,
       "isAdmin": false,
-      "gold": 0
+      "name": "Kaitlyn",
+      "password": "Solaya"
     },
     {
       "id": 4,
-      "name": "Justin",
-      "password": "Sum",
+      "gold": "614",
       "isAdmin": false,
-      "gold": 0
+      "name": "Justin",
+      "password": "Sum"
     },
     {
       "id": 5,
-      "name": "Will",
-      "password": "Jeb",
+      "gold": "312",
       "isAdmin": false,
-      "gold": 0
+      "name": "Will",
+      "password": "Jeb"
     },
     {
       "id": 6,
-      "name": "Jacob",
-      "password": "Tator",
+      "gold": "222",
       "isAdmin": false,
-      "gold": 0
+      "name": "Jacob",
+      "password": "Tator"
     }
   ],
   "items": [
@@ -135,23 +135,7 @@
       "id": 4
     }
   ],
-  "carts": [
-    {
-      "itemId": "1",
-      "userId": 3,
-      "id": 6
-    },
-    {
-      "itemId": "1",
-      "userId": 3,
-      "id": 7
-    },
-    {
-      "itemId": "4",
-      "userId": 3,
-      "id": 8
-    }
-  ],
+  "carts": [],
   "purchasedItems": [
     {
       "userId": 2,
@@ -172,6 +156,31 @@
       "userId": 2,
       "itemId": "4",
       "id": 4
+    },
+    {
+      "userId": 2,
+      "itemId": "3",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "itemId": "3",
+      "id": 6
+    },
+    {
+      "userId": 3,
+      "itemId": "4",
+      "id": 7
+    },
+    {
+      "userId": 3,
+      "itemId": "1",
+      "id": 8
+    },
+    {
+      "userId": 3,
+      "itemId": "1",
+      "id": 9
     }
   ]
 }
