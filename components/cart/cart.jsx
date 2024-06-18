@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./cart.css";
-import { deleteCartItem, getCartItems } from "../../services/cartService";
+import { deleteCartItem, getCartItems, purchaseItems } from "../../services/cartService";
+import { useNavigate } from "react-router";
 
 export const Cart = ({ currentUser }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,6 +20,8 @@ export const Cart = ({ currentUser }) => {
     setFoundCartItems(foundItems);
   }, [cartItems]);
 
+  let totalGold = 0
+
   let totalCost = 0;
 
   const handleDelete = (item) => {
@@ -29,11 +32,31 @@ export const Cart = ({ currentUser }) => {
     });
   };
 
+  const navigate = useNavigate()
+
+  const handleBuy = (event) => {
+    event.preventDefault()
+    if (totalCost <= totalGold) {
+        {foundCartItems.map((item) => {
+            const newItem = {
+                userId: item.userId,
+                itemId: item.itemId
+            }
+            purchaseItems(newItem)
+        })}
+        navigate("/purchases")
+        
+    } else {
+        alert("Insufficient Funds")
+    }
+  }
+
   return (
     <div className="cart">
       <h2>Your Order</h2>
       {foundCartItems.map((item) => {
         totalCost += parseInt(item.item.cost);
+        totalGold = parseInt(item.user.gold)
         return (
           <div className="cart-item" key={item.id}>
             <p>{item.item.name} </p>
@@ -46,7 +69,7 @@ export const Cart = ({ currentUser }) => {
         <p>Total: {totalCost}</p>
       </div>
       <div>
-        <button>Purchase</button>
+        <button onClick={handleBuy}>Purchase</button>
       </div>
     </div>
   );

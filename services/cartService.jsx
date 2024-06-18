@@ -17,3 +17,13 @@ export const AddItemToCart = (item) => {
 export const deleteCartItem = (itemId) => {
   return fetch(`http://localhost:8088/carts/${itemId}`, { method: "DELETE" });
 };
+
+export const purchaseItems = (item) => {
+    return fetch(`http://localhost:8088/purchasedItems`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(item),
+      })
+}
