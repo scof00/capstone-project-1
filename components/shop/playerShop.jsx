@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { deleteShopItems, getShopItems } from "../../services/shopService";
 import { Filters } from "../filters/filter";
+import { AddItemToCart } from "../../services/cartService";
 
-export const PlayerShop = () => {
+export const PlayerShop = ({currentUser}) => {
   const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
@@ -13,14 +14,6 @@ export const PlayerShop = () => {
       setShopItems(array);
     });
   }, []);
-
-  const handleDelete = (item) => {
-    deleteShopItems(item.id).then(() => {
-      getShopItems().then((array) => {
-        setShopItems(array);
-      });
-    });
-  };
 
   useEffect(() => {
     if (itemFilter == 1) {
@@ -49,6 +42,15 @@ export const PlayerShop = () => {
     });
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
+
+  const handleSubmit =(event) => {
+    event.preventDefault()
+    const newItem = {
+      itemId: event.target.value,
+      userId: currentUser.id
+    }
+    AddItemToCart(newItem)
+  }
 
   return (
     <>
@@ -94,7 +96,7 @@ export const PlayerShop = () => {
                 {item.quantity}
               </div>
               <div className="container-btns">
-                <button className="item-btn" >
+                <button className="item-btn" value={item.item.id} onClick={handleSubmit}>
                   Add to Cart
                 </button>
               </div>

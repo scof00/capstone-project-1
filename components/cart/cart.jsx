@@ -24,7 +24,7 @@ export const Cart = ({ currentUser }) => {
   <div className="cart">
     <h2>Your Order</h2>
     {foundCartItems.map((item) => {
-        totalCost += item.item.cost
+        totalCost += parseInt(item.item.cost)
         return(
             <div className="cart-item" key={item.id}>
                 <p>{item.item.name} </p>
