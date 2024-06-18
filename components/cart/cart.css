@@ -16,14 +16,24 @@
     display: flex;
     width: 100%;
     margin: 0;
+    text-align: right;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .remove-item{
     background: none;
     height: fit-content;
     padding: 0;
+    margin-left: 10px;
 }
 
 .price {
     text-align: right;
+}
+
+.go-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: auto;
 }

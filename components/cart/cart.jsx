@@ -53,12 +53,12 @@ export const Cart = ({ currentUser }) => {
       }
       {
         foundCartItems.map((item) => {
-            deleteCartItem(item.id).then(() => {
-                getCartItems().then((array) => {
-                    setCartItems(array)
-                })
-            })
-        })
+          deleteCartItem(item.id).then(() => {
+            getCartItems().then((array) => {
+              setCartItems(array);
+            });
+          });
+        });
       }
       const newPlayerTotal = totalGold - totalCost;
       const newPlayerInfo = {
@@ -83,25 +83,33 @@ export const Cart = ({ currentUser }) => {
   return (
     <div className="cart">
       <h2>Your Cart</h2>
-      {foundCartItems.map((item) => {
-        totalCost += parseInt(item.item.cost);
-        totalGold = parseInt(item.user.gold);
-        return (
-          <div className="cart-item" key={item.id}>
-            <p>{item.item.name} </p>
-            <p className="price"> . . . {item.item.cost}</p>
-            <button className="remove-item" onClick={() => handleDelete(item)}>
-              {" "}
-              X
-            </button>
-          </div>
-        );
-      })}
-      <div>
-        <p>Total: {totalCost}</p>
-      </div>
-      <div>
-        <button onClick={handleBuy}>Purchase</button>
+      <div className="go-right">
+        {foundCartItems.map((item) => {
+          totalCost += parseInt(item.item.cost);
+          totalGold = parseInt(item.user.gold);
+          return (
+            <div className="cart-item" key={item.id}>
+              <p>{item.item.name} </p>
+              <p className="price">
+                {" "}
+                . . . {item.item.cost}{" "}
+                <button
+                  className="remove-item"
+                  onClick={() => handleDelete(item)}
+                >
+                  {" "}
+                  <u>x</u>
+                </button>
+              </p>
+            </div>
+          );
+        })}
+        <div>
+          <p>Total: {totalCost}</p>
+        </div>
+        <div>
+          <button onClick={handleBuy}>Purchase</button>
+        </div>
       </div>
     </div>
   );

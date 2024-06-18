@@ -47,7 +47,6 @@ export const PlayerShop = ({ currentUser }) => {
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
 
-  let itemQuantity = 0;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,19 +54,6 @@ export const PlayerShop = ({ currentUser }) => {
       itemId: event.target.value,
       userId: currentUser.id,
     };
-    {
-      shopItems.map((item) => {
-        if (item.itemId === event.target.value) {
-          const editedQuantity = {
-            itemId: event.target.value,
-            quantity: item.quantity - 1,
-            rarityId: item.rarityId,
-            id: item.id,
-          };
-          reduceQuantity(editedQuantity);
-        }
-      });
-    }
     AddItemToCart(newItem);
   };
 

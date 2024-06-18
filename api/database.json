@@ -135,7 +135,28 @@
       "id": 4
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "itemId": "1",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "itemId": "2",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "itemId": "3",
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "itemId": "4",
+      "userId": 2,
+      "id": 4
+    }
+  ],
   "purchasedItems": [
     {
       "userId": 2,
