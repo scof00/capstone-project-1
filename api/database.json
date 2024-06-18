@@ -9,7 +9,7 @@
     },
     {
       "id": 2,
-      "gold": 26,
+      "gold": 38,
       "isAdmin": false,
       "name": "Maddie",
       "password": "Calliope"
@@ -150,21 +150,6 @@
       "itemId": "4",
       "userId": 3,
       "id": 8
-    },
-    {
-      "itemId": "4",
-      "userId": 2,
-      "id": 9
-    },
-    {
-      "itemId": "4",
-      "userId": 2,
-      "id": 10
-    },
-    {
-      "itemId": "4",
-      "userId": 2,
-      "id": 11
     }
   ],
   "purchasedItems": [
@@ -187,21 +172,6 @@
       "userId": 2,
       "itemId": "4",
       "id": 4
-    },
-    {
-      "userId": 2,
-      "itemId": "4",
-      "id": 5
-    },
-    {
-      "userId": 2,
-      "itemId": "4",
-      "id": 6
-    },
-    {
-      "userId": 2,
-      "itemId": "4",
-      "id": 7
     }
   ]
 }

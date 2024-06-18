@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import "./cart.css";
-import { deleteCartItem, getCartItems, purchaseItems } from "../../services/cartService";
+import {
+  deleteCartItem,
+  getCartItems,
+  purchaseItems,
+} from "../../services/cartService";
 import { useNavigate } from "react-router";
 import { addGold, setCurrentUserGold } from "../../services/userServices";
 
@@ -21,7 +25,7 @@ export const Cart = ({ currentUser }) => {
     setFoundCartItems(foundItems);
   }, [cartItems]);
 
-  let totalGold = 0
+  let totalGold = 0;
 
   let totalCost = 0;
 
@@ -33,51 +37,63 @@ export const Cart = ({ currentUser }) => {
     });
   };
 
-  const navigate = useNavigate()
-
-  
+  const navigate = useNavigate();
 
   const handleBuy = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (totalCost <= totalGold) {
-        {foundCartItems.map((item) => {
-            const newItem = {
-                userId: item.userId,
-                itemId: item.itemId
-            }
-            purchaseItems(newItem)
-        })}
-        const newPlayerTotal = totalGold - totalCost
-        const newPlayerInfo ={
-            id: currentUser.id,
-            gold: newPlayerTotal,
-            isAdmin: currentUser.isAdmin,
-            name: currentUser.name,
-            password: currentUser.password
-        }
-        setCurrentUserGold(newPlayerInfo).then(() => {
-            navigate("/purchases")
-        }).then(() => {
-            window.location.reload()
+      {
+        foundCartItems.map((item) => {
+          const newItem = {
+            userId: item.userId,
+            itemId: item.itemId,
+          };
+          purchaseItems(newItem);
+        });
+      }
+      {
+        foundCartItems.map((item) => {
+            deleteCartItem(item.id).then(() => {
+                getCartItems().then((array) => {
+                    setCartItems(array)
+                })
+            })
         })
-        
-        
+      }
+      const newPlayerTotal = totalGold - totalCost;
+      const newPlayerInfo = {
+        id: currentUser.id,
+        gold: newPlayerTotal,
+        isAdmin: currentUser.isAdmin,
+        name: currentUser.name,
+        password: currentUser.password,
+      };
+      setCurrentUserGold(newPlayerInfo)
+        .then(() => {
+          navigate("/purchases");
+        })
+        .then(() => {
+          window.location.reload();
+        });
     } else {
-        alert("Insufficient Funds")
+      alert("Insufficient Funds");
     }
-  }
+  };
 
   return (
     <div className="cart">
       <h2>Your Order</h2>
       {foundCartItems.map((item) => {
         totalCost += parseInt(item.item.cost);
-        totalGold = parseInt(item.user.gold)
+        totalGold = parseInt(item.user.gold);
         return (
           <div className="cart-item" key={item.id}>
             <p>{item.item.name} </p>
             <p className="price"> . . . {item.item.cost}</p>
-            <button className="remove-item" onClick={() => handleDelete(item)}> X</button>
+            <button className="remove-item" onClick={() => handleDelete(item)}>
+              {" "}
+              X
+            </button>
           </div>
         );
       })}
