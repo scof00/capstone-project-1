@@ -35,7 +35,7 @@ export const CustomerNavbar = ({ currentUser }) => {
         </li>
         |
         <li className="navbar-item">
-          <Link to="/" className="navbar-item">
+          <Link to="cart" className="navbar-item">
             Your Cart
           </Link>
         </li>

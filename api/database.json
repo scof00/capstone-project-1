@@ -134,5 +134,13 @@
       "quantity": "50",
       "id": 4
     }
+  ],
+  "carts":
+  [
+    {
+      "id": 1,
+      "itemId": 1,
+      "userId": 3
+    }
   ]
 }

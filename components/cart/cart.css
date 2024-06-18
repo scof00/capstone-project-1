@@ -1,0 +1,17 @@
+.cart{
+    background-color: #E5DFCF;
+    margin: auto;
+    width: fit-content;
+    font-family: 'luminari', sans-serif;
+    color: black;
+    margin-top: 20px;
+    padding: 10px;
+    border-style: outset;
+    border-radius: 25px;
+    border-color: #783f04;
+    border-width: 5px;
+}
+
+.cart-item{
+    display: flex;
+}
