@@ -52,12 +52,14 @@ export const Shop = () => {
 
   return (
     <>
+    <h1 className="page-title">Shop</h1>
       <Filters
         setSearchTerm={setSearchTerm}
         setItemFilter={setItemFilter}
         itemFilter={itemFilter}
         searchTerm={searchTerm}
       />
+      
       <div className="items">
         {filteredItems.map((item) => {
           return (

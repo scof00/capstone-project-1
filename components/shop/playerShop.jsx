@@ -73,6 +73,7 @@ export const PlayerShop = ({ currentUser }) => {
 
   return (
     <>
+    <h1 className="page-title">Shop</h1>
       <div className="entire-shop">
         <Filters
           setSearchTerm={setSearchTerm}

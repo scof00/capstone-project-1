@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPurchasedItems } from "../../services/cartService";
-import "./purchases.css"
+import "./purchases.css";
 
 export const PlayerPurchases = ({ currentUser }) => {
   const [purchasedItems, setPurchasedItems] = useState([]);
@@ -19,10 +19,10 @@ export const PlayerPurchases = ({ currentUser }) => {
     setFoundPurchasedItems(foundItems);
   }, [purchasedItems]);
 
-  
   return (
-    
-    <div className="player-purchases">
+    <>
+    <h1 className="page-title">Your Purchases</h1>
+      <div className="player-purchases">
         {foundPurchasedItems.map((item) => {
           return (
             <div className="itemContainer" key={item.id}>
@@ -48,6 +48,7 @@ export const PlayerPurchases = ({ currentUser }) => {
             </div>
           );
         })}
-    </div>
+      </div>
+    </>
   );
 };

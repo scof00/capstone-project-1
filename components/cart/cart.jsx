@@ -82,7 +82,7 @@ export const Cart = ({ currentUser }) => {
 
   return (
     <div className="cart">
-      <h2>Your Order</h2>
+      <h2>Your Cart</h2>
       {foundCartItems.map((item) => {
         totalCost += parseInt(item.item.cost);
         totalGold = parseInt(item.user.gold);

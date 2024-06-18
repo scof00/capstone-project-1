@@ -59,3 +59,9 @@ img{
     display: flex;
     flex-direction: row;
 }
+
+.page-title{
+    font-family: 'luminari', sans-serif;
+    color: white;
+    -webkit-text-stroke: 1.5px black;
+}

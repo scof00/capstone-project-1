@@ -57,6 +57,7 @@ export const ItemsList = () => {
 
   return (
     <>
+    <h1 className="page-title">All Items</h1>
       <Filters
         setSearchTerm={setSearchTerm}
         setItemFilter={setItemFilter}
