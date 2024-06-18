@@ -13,3 +13,7 @@ export const AddItemToCart = (item) => {
     body: JSON.stringify(item),
   });
 };
+
+export const deleteCartItem = (itemId) => {
+  return fetch(`http://localhost:8088/carts/${itemId}`, { method: "DELETE" });
+};

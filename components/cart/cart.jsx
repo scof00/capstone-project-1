@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./cart.css";
-import { getCartItems } from "../../services/cartService";
+import { deleteCartItem, getCartItems } from "../../services/cartService";
 
 export const Cart = ({ currentUser }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,25 +19,35 @@ export const Cart = ({ currentUser }) => {
     setFoundCartItems(foundItems);
   }, [cartItems]);
 
-  let totalCost = 0
+  let totalCost = 0;
+
+  const handleDelete = (item) => {
+    deleteCartItem(item.id).then(() => {
+      getCartItems().then((array) => {
+        setCartItems(array);
+      });
+    });
+  };
+
   return (
-  <div className="cart">
-    <h2>Your Order</h2>
-    {foundCartItems.map((item) => {
-        totalCost += parseInt(item.item.cost)
-        return(
-            <div className="cart-item" key={item.id}>
-                <p>{item.item.name} </p>
-                <p> . . . {item.item.cost}</p>
-            </div>
-        )
-    })}
-    <div>
+    <div className="cart">
+      <h2>Your Order</h2>
+      {foundCartItems.map((item) => {
+        totalCost += parseInt(item.item.cost);
+        return (
+          <div className="cart-item" key={item.id}>
+            <p>{item.item.name} </p>
+            <p className="price"> . . . {item.item.cost}</p>
+            <button className="remove-item" onClick={() => handleDelete(item)}> X</button>
+          </div>
+        );
+      })}
+      <div>
         <p>Total: {totalCost}</p>
-    </div>
-    <div>
+      </div>
+      <div>
         <button>Purchase</button>
+      </div>
     </div>
-  </div>
-);
+  );
 };

@@ -14,4 +14,16 @@
 
 .cart-item{
     display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.remove-item{
+    background: none;
+    height: fit-content;
+    padding: 0;
+}
+
+.price {
+    text-align: right;
 }
