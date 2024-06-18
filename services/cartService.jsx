@@ -27,3 +27,9 @@ export const purchaseItems = (item) => {
         body: JSON.stringify(item),
       })
 }
+
+export const getPurchasedItems = () => {
+    return fetch(`http://localhost:8088/purchasedItems?_expand=item&_expand=user`).then(
+        (res) => res.json()
+      )
+}
