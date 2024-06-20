@@ -107,56 +107,28 @@
   ],
   "shopItems": [
     {
-      "name": "Potion of Healing",
-      "rarityId": 1,
       "itemId": 1,
-      "quantity": "5",
-      "id": 1
-    },
-    {
-      "name": "Potion of Climbing",
       "rarityId": 1,
+      "name": "Potion of Healing",
+      "id": 1,
+      "quantity": 43
+    },
+    {
       "itemId": 2,
-      "quantity": "5",
-      "id": 2
+      "rarityId": 1,
+      "name": "Potion of Climbing",
+      "id": 2,
+      "quantity": 3
     },
     {
-      "name": "New Item",
-      "rarityId": "3",
-      "itemId": 3,
-      "quantity": "5",
-      "id": 3
-    },
-    {
-      "name": "item 4",
-      "rarityId": "4",
       "itemId": 4,
-      "quantity": "50",
-      "id": 4
+      "rarityId": 4,
+      "name": "item 4",
+      "id": 4,
+      "quantity": 47
     }
   ],
-  "carts": [
-    {
-      "itemId": "1",
-      "userId": 2,
-      "id": 1
-    },
-    {
-      "itemId": "2",
-      "userId": 2,
-      "id": 2
-    },
-    {
-      "itemId": "3",
-      "userId": 2,
-      "id": 3
-    },
-    {
-      "itemId": "4",
-      "userId": 2,
-      "id": 4
-    }
-  ],
+  "carts": [],
   "purchasedItems": [
     {
       "userId": 2,

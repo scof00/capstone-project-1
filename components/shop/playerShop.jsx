@@ -47,16 +47,20 @@ export const PlayerShop = ({ currentUser }) => {
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
 
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newItem = {
-      itemId: event.target.value,
-      userId: currentUser.id,
-    };
-    AddItemToCart(newItem);
-  };
-
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const newItem = {
+  //     itemId: event.target.value,
+  //     userId: currentUser.id,
+  //   };
+  //   const newQuantity = {
+  //     itemId: event.target.value,
+  //     quantity: newAmount
+  //   }
+  //   reduceQuantity(newQuantity)
+  //   AddItemToCart(newItem);
+  // };
+  
   return (
     <>
     <h1 className="page-title">Shop</h1>
@@ -69,6 +73,26 @@ export const PlayerShop = ({ currentUser }) => {
         />
         <div className="items">
           {filteredItems.map((item) => {
+            let itemQuantity = 0
+            itemQuantity = parseInt(item.quantity)
+             const handleSubmit = (event) => {
+              event.preventDefault();
+              const newItem = {
+                itemId: event.target.value,
+                userId: currentUser.id,
+              };
+              itemQuantity--
+              const settingNewQuantity = {
+                itemId: item.itemId,
+                rarityId: parseInt(item.rarityId),
+                name: item.name,
+                id: item.id,
+                quantity: itemQuantity
+              }
+              reduceQuantity(settingNewQuantity)
+              AddItemToCart(newItem);
+              window.location.reload()
+            }
             return (
               <div className="itemContainer" key={item.id}>
                 <div className="item-info-item">
@@ -104,7 +128,7 @@ export const PlayerShop = ({ currentUser }) => {
                       <u>In stock:</u>{" "}
                     </strong>
                   </span>
-                  {item.quantity}
+                  {itemQuantity}
                 </div>
                 <div className="container-btns">
                   <button
