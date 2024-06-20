@@ -3,6 +3,7 @@ import {
   changItemStatus,
   deleteItems,
   getAllUnsoldItems,
+  getItemsFromItemTags,
 } from "../../services/itemsService";
 import "./items.css";
 
@@ -12,14 +13,27 @@ import { getItemTags } from "../../services/tagsService";
 
 export const ItemsList = () => {
   const [items, setItems] = useState([]);
+
   const [allItemTags, setAllItemTags] = useState([])
+
+  const [taggedItems, setTaggedItems] = useState([])
+
   const [searchTerm, setSearchTerm] = useState("");
+
   const [filteredItems, setFilteredItems] = useState([]);
+
   const [itemFilter, setItemFilter] = useState(0);
+
+  const [tagFilter, setTagFilter] = useState(0)
+
 
   useEffect(() => {
     getAllUnsoldItems().then((itemsArray) => setItems(itemsArray));
   }, []);
+
+  useEffect(()=>{
+    getItemsFromItemTags().then((array) => setTaggedItems(array))
+  },[])
 
   useEffect(() => {
     getItemTags().then((array) => {
@@ -37,24 +51,31 @@ export const ItemsList = () => {
 
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = items.filter((item) => item.rarityId === 1);
+      const filtered = items.filter((item) => parseInt(item.rarityId) === 1);
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = items.filter((item) => item.rarity.id === 2);
+      const filtered = items.filter((item) => parseInt(item.rarity.id) === 2);
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = items.filter((item) => item.rarity.id === 3);
+      const filtered = items.filter((item) => parseInt(item.rarity.id) === 3);
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = items.filter((item) => item.rarity.id === 4);
+      const filtered = items.filter((item) => parseInt(item.rarity.id)=== 4);
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = items.filter((item) => item.rarity.id === 5);
+      const filtered = items.filter((item) => parseInt(item.rarity.id) === 5);
       setFilteredItems(filtered);
     } else {
       setFilteredItems(items);
     }
   }, [itemFilter, items]);
+
+  useEffect(()=>{
+    if(tagFilter == 1){
+      const filtered = taggedItems.filter((item) => item.tagId === 1)
+      setFilteredItems(filtered)
+    }
+  },[tagFilter, items])
 
   useEffect(() => {
     const foundItem = items.filter((item) => {
@@ -67,6 +88,7 @@ export const ItemsList = () => {
     <>
     <h1 className="page-title">All Items</h1>
       <Filters
+        setTagFilter={setTagFilter}
         setSearchTerm={setSearchTerm}
         setItemFilter={setItemFilter}
         itemFilter={itemFilter}

@@ -70,10 +70,11 @@
     },
     {
       "name": "potion of potioning",
+      "id": 3,
       "description": "new",
       "cost": "50",
       "rarityId": "1",
-      "id": 3
+      "purchased": false
     },
     {
       "name": "new heavy armor",
