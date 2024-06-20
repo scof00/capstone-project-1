@@ -105,6 +105,68 @@
       "name": "Legendary"
     }
   ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "Armor"
+    },
+    {
+      "id": 2,
+      "name": "Weapon"
+    },
+    {
+      "id": 3,
+      "name": "Potion"
+    },
+    {
+      "id": 4,
+      "name": "Scroll"
+    },
+    {
+      "id": 5,
+      "name": "Light Armor"
+    },
+    {
+      "id": 6,
+      "name": "Medium Armor"
+    },
+    {
+      "id": 7,
+      "name": "Heavy Armor"
+    },
+    {
+      "id": 8,
+      "name": "Robes"
+    },
+    {
+      "id": 9,
+      "name": "Martial Weapon"
+    },
+    {
+      "id": 10,
+      "name": "Simple Weapon"
+    },
+    {
+      "id": 11,
+      "name": "Ranged Weapon"
+    },
+    {
+      "id": 12,
+      "name": "Staff"
+    },
+    {
+      "id": 13,
+      "name": "Attuned"
+    },
+    {
+      "id": 14,
+      "name": "Ring"
+    },
+    {
+      "id": 15,
+      "name": "Rod"
+    }
+  ],
   "shopItems": [
     {
       "itemId": 1,

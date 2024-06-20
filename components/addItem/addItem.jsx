@@ -3,15 +3,26 @@ import "./addItem.css";
 import { getRarities } from "../../services/rarityservice";
 import { useNavigate } from "react-router-dom";
 import { createItem } from "../../services/itemsService";
+import { getTags } from "../../services/tagsService";
 
 export const AddItems = () => {
   const [item, setItem] = useState({});
 
   const [rarities, setRarities] = useState([]);
 
+  const [tags, setTags] = useState([])
+
+  const [itemTags, setItemTags] = useState([])
+
+
+
   useEffect(() => {
     getRarities().then((raritiesArray) => setRarities(raritiesArray));
   }, []);
+
+  useEffect(() => {
+    getTags().then((array) => setTags(array))
+  }, [])
 
   const navigate = useNavigate();
 
@@ -27,6 +38,7 @@ export const AddItems = () => {
       navigate("/items");
     });
   };
+  const selectedTags = []
 
   return (
     <div>
@@ -105,6 +117,26 @@ export const AddItems = () => {
                   setItem(itemCopy);
                 }}
               />
+            </div>
+          </fieldset>
+          <fieldset>
+            <div>
+              <p>Select Tags: </p>
+              {tags.map((tag) => {
+                  return (
+                    <div className="item-tags">
+                    <input type="checkbox" key={tag.id} id={tag.id} value={tag.id}
+                    onClick={(event) => {
+                      event.target.checked ? selectedTags.push(parseInt(event.target.value)) : ""
+                      
+                      console.log(selectedTags)
+                    }}
+                    ></input>
+                    <label>{tag.name}</label>
+
+                    </div>
+                  );
+                })}
             </div>
           </fieldset>
         </div>
