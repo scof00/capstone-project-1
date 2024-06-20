@@ -11,3 +11,7 @@ export const createItemTags = (item) => {
     body: JSON.stringify(item),
   });
 };
+
+export const getItemTags =() => {
+    return fetch("http://localhost:8088/itemTags?_expand=item&_expand=tag").then((res) => res.json())
+}

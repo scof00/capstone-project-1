@@ -8,9 +8,11 @@ import "./items.css";
 
 import { Filters } from "../filters/filter";
 import { Link } from "react-router-dom";
+import { getItemTags } from "../../services/tagsService";
 
 export const ItemsList = () => {
   const [items, setItems] = useState([]);
+  const [allItemTags, setAllItemTags] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
@@ -18,6 +20,12 @@ export const ItemsList = () => {
   useEffect(() => {
     getAllUnsoldItems().then((itemsArray) => setItems(itemsArray));
   }, []);
+
+  useEffect(() => {
+    getItemTags().then((array) => {
+      setAllItemTags(array)
+    })
+  },[])
 
   const handleDelete = (item) => {
     deleteItems(item.id).then(() => {
@@ -84,6 +92,16 @@ export const ItemsList = () => {
                 {item.description}
               </div>
               <div>
+                <u>Tags: </u>
+                {allItemTags.map((tag) => {
+                  if(tag.itemId === item.id) {
+                    return(
+                      <div>{tag.tag.name}</div>
+                    )
+                  }
+                })}
+              </div>
+              <div>
                 <span className="item-info-cost">
                   <strong><u>Cost:</u> </strong>
                 </span>
@@ -94,7 +112,7 @@ export const ItemsList = () => {
                   Delete
                 </button>
                 <Link to={`/items/edit/${item.id}`}>
-                  <button className="item-btn">Edit and Add Tags</button>
+                  <button className="item-btn">Edit</button>
                 </Link>
                 <Link to={`/items/addShopItem/${item.id}`}>
                   <button className="item-btn">Add to shop</button>
