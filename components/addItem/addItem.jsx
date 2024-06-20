@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import "./addItem.css";
 import { getRarities } from "../../services/rarityservice";
 import { useNavigate } from "react-router-dom";
-import { createItem } from "../../services/itemsService";
-import { getTags } from "../../services/tagsService";
+import { createItem, getAllUnsoldItems } from "../../services/itemsService";
+import { createItemTags, getTags } from "../../services/tagsService";
 
 export const AddItems = () => {
   const [item, setItem] = useState({});
@@ -13,6 +13,8 @@ export const AddItems = () => {
   const [tags, setTags] = useState([])
 
   const [itemTags, setItemTags] = useState([])
+
+  const [allItems, setAllItems] = useState([])
 
 
 
@@ -24,21 +26,38 @@ export const AddItems = () => {
     getTags().then((array) => setTags(array))
   }, [])
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    getAllUnsoldItems().then((array) => {
+      setAllItems(array)
+    })
+  },[])
 
+  const navigate = useNavigate();
+  const selectedTags = []
+  const itemsLength = allItems.length
+  const newId = itemsLength + 1
+  
   const handleSave = (event) => {
     event.preventDefault();
+    setItemTags(selectedTags)
     const newItem = {
       name: item.name,
       description: item.description,
       cost: item.cost,
       rarityId: item.rarityId
     };
+    {selectedTags.map((tag) => {
+      const newTag = {
+        tagId: tag,
+        itemId: newId
+      }
+      createItemTags(newTag)
+    })}
     createItem(newItem).then(() => {
       navigate("/items");
     });
   };
-  const selectedTags = []
+ 
 
   return (
     <div>

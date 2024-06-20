@@ -94,7 +94,7 @@ export const ItemsList = () => {
                   Delete
                 </button>
                 <Link to={`/items/edit/${item.id}`}>
-                  <button className="item-btn">Edit</button>
+                  <button className="item-btn">Edit and Add Tags</button>
                 </Link>
                 <Link to={`/items/addShopItem/${item.id}`}>
                   <button className="item-btn">Add to shop</button>

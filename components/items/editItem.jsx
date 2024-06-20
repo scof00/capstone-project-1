@@ -3,9 +3,12 @@ import { useNavigate, useParams } from "react-router";
 import { getItemById, updateItem } from "../../services/itemsService";
 import { getRarities } from "../../services/rarityservice";
 
+
 export const EditItem = () => {
     const [item, setItem] = useState({})
     const [rarities, setRarities] = useState([])
+
+
     const {itemId} = useParams()
 
     useEffect(() => {
@@ -21,7 +24,9 @@ export const EditItem = () => {
         })
     }, [])
 
-    const navigate = useNavigate()
+    const navigate = useNavigate(
+
+    )
 
     const handleSave = (event) => {
         event.preventDefault()
