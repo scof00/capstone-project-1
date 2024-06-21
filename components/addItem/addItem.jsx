@@ -10,54 +10,56 @@ export const AddItems = () => {
 
   const [rarities, setRarities] = useState([]);
 
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState([]);
 
-  const [itemTags, setItemTags] = useState([])
+  const [itemTags, setItemTags] = useState([]);
 
-  const [allItems, setAllItems] = useState([])
-
-
+  const [allItems, setAllItems] = useState([]);
 
   useEffect(() => {
     getRarities().then((raritiesArray) => setRarities(raritiesArray));
   }, []);
 
   useEffect(() => {
-    getTags().then((array) => setTags(array))
-  }, [])
+    getTags().then((array) => setTags(array));
+  }, []);
 
   useEffect(() => {
     getAllUnsoldItems().then((array) => {
-      setAllItems(array)
-    })
-  },[])
+      setAllItems(array);
+    });
+  }, []);
 
   const navigate = useNavigate();
-  const selectedTags = []
-  const itemsLength = allItems.length
-  const newId = itemsLength + 1
-  
+  const selectedTags = [];
+
   const handleSave = (event) => {
     event.preventDefault();
-    setItemTags(selectedTags)
+    setItemTags(selectedTags);
     const newItem = {
       name: item.name,
       description: item.description,
       cost: item.cost,
-      rarityId: item.rarityId
+      rarityId: item.rarityId,
     };
-    {selectedTags.map((tag) => {
-      const newTag = {
-        tagId: tag,
-        itemId: newId
-      }
-      createItemTags(newTag)
-    })}
-    createItem(newItem).then(() => {
-      navigate("/items");
-    });
+    createItem(newItem)
+      .then((data) => {
+        if (data) {
+          {
+            selectedTags.map((tag) => {
+              const newTag = {
+                tagId: tag,
+                itemId: data,
+              };
+              createItemTags(newTag);
+            });
+          }
+        }
+      })
+      .then(() => {
+        navigate("/items");
+      });
   };
- 
 
   return (
     <div>
@@ -142,28 +144,32 @@ export const AddItems = () => {
             <div>
               <p>Select Tags: </p>
               {tags.map((tag) => {
-                  return (
-                    <div className="item-tags">
-                    <input type="checkbox" key={tag.id} id={tag.id} value={tag.id}
-                    onClick={(event) => {
-                      event.target.checked ? selectedTags.push(parseInt(event.target.value)) : ""
-                      
-                      console.log(selectedTags)
-                    }}
+                return (
+                  <div className="item-tags">
+                    <input
+                      type="checkbox"
+                      key={tag.id}
+                      id={tag.id}
+                      value={tag.id}
+                      onClick={(event) => {
+                        event.target.checked
+                          ? selectedTags.push(parseInt(event.target.value))
+                          : "";
+
+                        console.log(selectedTags);
+                      }}
                     ></input>
                     <label>{tag.name}</label>
-
-                    </div>
-                  );
-                })}
+                  </div>
+                );
+              })}
             </div>
           </fieldset>
         </div>
         <fieldset>
-            <button className="form-btn" onClick={handleSave}>
-              Save Item
-            </button>
-          
+          <button className="form-btn" onClick={handleSave}>
+            Save Item
+          </button>
         </fieldset>
       </form>
     </div>

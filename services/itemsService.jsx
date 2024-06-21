@@ -1,14 +1,14 @@
 export const getAllUnsoldItems = () => {
-  return fetch("http://localhost:8088/items?_expand=rarity").then((res) =>
-    res.json()
-  );
+  return fetch(
+    "http://localhost:8088/items?_expand=rarity&_embed=itemTags"
+  ).then((res) => res.json());
 };
 
 export const getItemById = (item) => {
-  return fetch(`http://localhost:8088/items/${item}?_expand=rarity`).then((res) =>
-    res.json()
-  )
-}
+  return fetch(`http://localhost:8088/items/${item}?_expand=rarity`).then(
+    (res) => res.json()
+  );
+};
 
 export const changItemStatus = async (modifiedItemObject) => {
   const putOptions = {
@@ -35,6 +35,11 @@ export const createItem = (item) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
+  }).then((res) => {
+    return res.json()
+  }).then((item) => {
+    console.log(item.id)
+    return item.id;
   });
 };
 
@@ -46,10 +51,10 @@ export const updateItem = (item) => {
     },
     body: JSON.stringify(item),
   });
-}
+};
 
 export const getItemsFromItemTags = () => {
-  return fetch("http://localhost:8088/itemTags?_expand=item&_expand=tag").then((res) =>
-    res.json()
-  )
-}
+  return fetch("http://localhost:8088/itemTags?_expand=item&_expand=tag").then(
+    (res) => res.json()
+  );
+};
