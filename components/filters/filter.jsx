@@ -49,7 +49,7 @@ export const Filters = ({
         />
         <select className="rarity-filter"
         onChange={(event) => {
-          return setTagFilter(event.target.value)
+          return setTagFilter(parseInt(event.target.value))
         }}
         >
           <option value="0">Sort by Tag</option>

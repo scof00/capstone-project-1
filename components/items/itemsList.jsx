@@ -14,9 +14,7 @@ import { getItemTags } from "../../services/tagsService";
 export const ItemsList = () => {
   const [items, setItems] = useState([]);
 
-  const [allItemTags, setAllItemTags] = useState([])
-
-  const [taggedItems, setTaggedItems] = useState([])
+  const [allItemTags, setAllItemTags] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -24,22 +22,17 @@ export const ItemsList = () => {
 
   const [itemFilter, setItemFilter] = useState(0);
 
-  const [tagFilter, setTagFilter] = useState(0)
-
+  const [tagFilter, setTagFilter] = useState(0);
 
   useEffect(() => {
     getAllUnsoldItems().then((itemsArray) => setItems(itemsArray));
   }, []);
 
-  useEffect(()=>{
-    getItemsFromItemTags().then((array) => setTaggedItems(array))
-  },[])
-
   useEffect(() => {
     getItemTags().then((array) => {
-      setAllItemTags(array)
-    })
-  },[])
+      setAllItemTags(array);
+    });
+  }, []);
 
   const handleDelete = (item) => {
     deleteItems(item.id).then(() => {
@@ -60,7 +53,7 @@ export const ItemsList = () => {
       const filtered = items.filter((item) => parseInt(item.rarity.id) === 3);
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = items.filter((item) => parseInt(item.rarity.id)=== 4);
+      const filtered = items.filter((item) => parseInt(item.rarity.id) === 4);
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
       const filtered = items.filter((item) => parseInt(item.rarity.id) === 5);
@@ -70,12 +63,222 @@ export const ItemsList = () => {
     }
   }, [itemFilter, items]);
 
-  useEffect(()=>{
-    if(tagFilter == 1){
-      const filtered = taggedItems.filter((item) => item.tagId === 1)
-      setFilteredItems(filtered)
+  useEffect(() => {
+    if (tagFilter == 0) {
+      let filtered = items;
+      setFilteredItems(filtered);
+    } else if (tagFilter == 1) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 1) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 2) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 2) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 3) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 3) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 4) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 4) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 5) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 5) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 6) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 6) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 7) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 7) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 8) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 8) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 9) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 9) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 10) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 10) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 11) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 11) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 12) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 12) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 13) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 13) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 14) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 14) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 15) {
+      let filtered = [];
+      {
+        items.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 15) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
     }
-  },[tagFilter, items])
+  }, [tagFilter, items]);
 
   useEffect(() => {
     const foundItem = items.filter((item) => {
@@ -86,7 +289,7 @@ export const ItemsList = () => {
 
   return (
     <>
-    <h1 className="page-title">All Items</h1>
+      <h1 className="page-title">All Items</h1>
       <Filters
         setTagFilter={setTagFilter}
         setSearchTerm={setSearchTerm}
@@ -96,6 +299,11 @@ export const ItemsList = () => {
       />
       <div className="items">
         {filteredItems.map((item) => {
+          // {item.itemTags.map((tag) => {
+          //   return (
+          //     console.log(tag.tagId)
+          //   )
+          // })}
           return (
             <div className="itemContainer" key={item.id}>
               <div className="item-info-item">
@@ -103,29 +311,33 @@ export const ItemsList = () => {
               </div>
               <div>
                 <span className="item-info-rarity">
-                  <strong><u>Rarity:</u> </strong>{" "}
+                  <strong>
+                    <u>Rarity:</u>{" "}
+                  </strong>{" "}
                 </span>
                 {item.rarity.name}
               </div>
               <div className="item-info-description">
                 <span>
-                  <strong><u>Description:</u> </strong>
+                  <strong>
+                    <u>Description:</u>{" "}
+                  </strong>
                 </span>
                 {item.description}
               </div>
               <div>
                 <u>Tags: </u>
                 {allItemTags.map((tag) => {
-                  if(tag.itemId === item.id) {
-                    return(
-                      <div>{tag.tag.name}</div>
-                    )
+                  if (tag.itemId === item.id) {
+                    return <div>{tag.tag.name}</div>;
                   }
                 })}
               </div>
               <div>
                 <span className="item-info-cost">
-                  <strong><u>Cost:</u> </strong>
+                  <strong>
+                    <u>Cost:</u>{" "}
+                  </strong>
                 </span>
                 {item.cost} Gold
               </div>
