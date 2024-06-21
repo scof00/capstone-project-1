@@ -12,6 +12,7 @@ export const PlayerShop = ({ currentUser }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
+  const [tagFilter, setTagFilter] = useState(0);
 
   useEffect(() => {
     getShopItems().then((array) => {
@@ -47,25 +48,231 @@ export const PlayerShop = ({ currentUser }) => {
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const newItem = {
-  //     itemId: event.target.value,
-  //     userId: currentUser.id,
-  //   };
-  //   const newQuantity = {
-  //     itemId: event.target.value,
-  //     quantity: newAmount
-  //   }
-  //   reduceQuantity(newQuantity)
-  //   AddItemToCart(newItem);
-  // };
-  
+  // NEED TO EMBED SHOPITEMS, ITEM TAGS, AND EXPAND RARITIES ONTO ITEMS
+
+  useEffect(() => {
+    if (tagFilter == 0) {
+      let filtered = shopItems;
+      setFilteredItems(filtered);
+    } else if (tagFilter == 1) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 1) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 2) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 2) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 3) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 3) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 4) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 4) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 5) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 5) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 6) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 6) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 7) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 7) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 8) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 8) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 9) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 9) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 10) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 10) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 11) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 11) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 12) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 12) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 13) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 13) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 14) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 14) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    } else if (tagFilter == 15) {
+      let filtered = [];
+      {
+        shopItems.map((item) => {
+          {
+            item.itemTags.map((tag) => {
+              if (tag.tagId === 15) {
+                filtered.push(item);
+              }
+            });
+          }
+        });
+      }
+      setFilteredItems(filtered);
+    }
+  }, [tagFilter, shopItems]);
+
   return (
     <>
-    <h1 className="page-title">Shop</h1>
+      <h1 className="page-title">Shop</h1>
       <div className="entire-shop">
         <Filters
+          setTagFilter={setTagFilter}
           setSearchTerm={setSearchTerm}
           setItemFilter={setItemFilter}
           itemFilter={itemFilter}
@@ -73,26 +280,26 @@ export const PlayerShop = ({ currentUser }) => {
         />
         <div className="items">
           {filteredItems.map((item) => {
-            let itemQuantity = 0
-            itemQuantity = parseInt(item.quantity)
-             const handleSubmit = (event) => {
+            let itemQuantity = 0;
+            itemQuantity = parseInt(item.quantity);
+            const handleSubmit = (event) => {
               event.preventDefault();
               const newItem = {
                 itemId: event.target.value,
                 userId: currentUser.id,
               };
-              itemQuantity--
+              itemQuantity--;
               const settingNewQuantity = {
                 itemId: item.itemId,
                 rarityId: parseInt(item.rarityId),
                 name: item.name,
                 id: item.id,
-                quantity: itemQuantity
-              }
-              reduceQuantity(settingNewQuantity)
+                quantity: itemQuantity,
+              };
+              reduceQuantity(settingNewQuantity);
               AddItemToCart(newItem);
-              window.location.reload()
-            }
+              window.location.reload();
+            };
             return (
               <div className="itemContainer" key={item.id}>
                 <div className="item-info-item">

@@ -218,7 +218,22 @@
       "id": 12
     }
   ],
-  "shopItems": [],
+  "shopItems": [
+    {
+      "name": "Potion of Healing",
+      "rarityId": "1",
+      "itemId": 2,
+      "quantity": "5",
+      "id": 1
+    },
+    {
+      "name": "Adamantine Armor",
+      "rarityId": "2",
+      "itemId": 6,
+      "quantity": "5",
+      "id": 2
+    }
+  ],
   "carts": [],
   "purchasedItems": []
 }
