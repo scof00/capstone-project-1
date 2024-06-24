@@ -26,7 +26,7 @@ export const Filters = ({
         <select
           className="rarity-filter"
           onChange={(event) => {
-            return setItemFilter(event.target.value);
+            return setItemFilter(parseInt(event.target.value));
           }}
         >
           <option value="0">Sort by Rarity</option>

@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
 import { deleteShopItems, getShopItems } from "../../services/shopService";
 import { Filters } from "../filters/filter";
+import { getAllUnsoldItems } from "../../services/itemsService";
 
 export const Shop = () => {
-  const [shopItems, setShopItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
+  const [shopItems, setShopItems] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
   const [tagFilter, setTagFilter] = useState(0);
 
   useEffect(() => {
-    getShopItems().then((array) => {
-      setShopItems(array);
+    getAllUnsoldItems().then((array) => {
+      setAllItems(array);
     });
   }, []);
+
+  useEffect(() => {
+    const newShopItems = []
+    {allItems.map((item) => {
+      if(item.shopItems.length == 1) {
+          newShopItems.push(item)
+      }
+      setShopItems(newShopItems)
+    })}
+  }, [allItems])
 
   const handleDelete = (item) => {
     deleteShopItems(item.id).then(() => {
@@ -25,19 +37,19 @@ export const Shop = () => {
 
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = shopItems.filter((item) => item.rarityId === 1);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 1);
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 2);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 2);
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 3);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 3);
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 4);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 4);
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 5);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 5);
       setFilteredItems(filtered);
     } else {
       setFilteredItems(shopItems);

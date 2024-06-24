@@ -22,19 +22,19 @@ export const PlayerShop = ({ currentUser }) => {
 
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = shopItems.filter((item) => item.rarityId === 1);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 1);
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 2);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 2);
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 3);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 3);
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 4);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 4);
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = shopItems.filter((item) => item.rarity.id === 5);
+      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 5);
       setFilteredItems(filtered);
     } else {
       setFilteredItems(shopItems);
