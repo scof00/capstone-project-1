@@ -6,19 +6,39 @@ import {
 } from "../../services/shopService";
 import { Filters } from "../filters/filter";
 import { AddItemToCart } from "../../services/cartService";
+import { getAllUnsoldItems } from "../../services/itemsService";
+import { getItemTags } from "../../services/tagsService";
 
 export const PlayerShop = ({ currentUser }) => {
+  const [allItems, setAllItems] = useState([])
   const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
   const [tagFilter, setTagFilter] = useState(0);
+  const [allItemTags, setAllItemTags] = useState([])
 
   useEffect(() => {
-    getShopItems().then((array) => {
-      setShopItems(array);
-    });
-  }, []);
+    getAllUnsoldItems().then((array) => setAllItems(array))
+  }, [])
+
+  useEffect(() => {
+    getItemTags().then((array) => {
+      setAllItemTags(array)
+    })
+  },[])
+
+  useEffect(() => {
+    const newShopItems = [];
+    {
+      allItems.map((item) => {
+        if (item.shopItems.length == 1) {
+          newShopItems.push(item);
+        }
+        setShopItems(newShopItems);
+      });
+    }
+  }, [allItems])
 
   useEffect(() => {
     if (itemFilter == 1) {
@@ -281,7 +301,11 @@ export const PlayerShop = ({ currentUser }) => {
         <div className="items">
           {filteredItems.map((item) => {
             let itemQuantity = 0;
-            itemQuantity = parseInt(item.quantity);
+            {item.shopItems.map((shop) => {
+              return(
+                itemQuantity = shop.quantity
+              )
+            })};
             const handleSubmit = (event) => {
               event.preventDefault();
               const newItem = {
@@ -289,14 +313,17 @@ export const PlayerShop = ({ currentUser }) => {
                 userId: currentUser.id,
               };
               itemQuantity--;
-              const settingNewQuantity = {
-                itemId: item.itemId,
-                rarityId: parseInt(item.rarityId),
-                name: item.name,
-                id: item.id,
-                quantity: itemQuantity,
-              };
-              reduceQuantity(settingNewQuantity);
+              {item.shopItems.map((shop) => {
+                const settingNewQuantity = {
+                  itemId: shop.itemId,
+                  rarityId: parseInt(shop.rarityId),
+                  name: shop.name,
+                  id: shop.id,
+                  quantity: itemQuantity,
+                };
+                reduceQuantity(settingNewQuantity);
+
+              })}
               AddItemToCart(newItem);
               window.location.reload();
             };
@@ -319,7 +346,7 @@ export const PlayerShop = ({ currentUser }) => {
                       <u>Description:</u>{" "}
                     </strong>
                   </span>
-                  {item.item?.description}
+                  {item.description}
                 </div>
                 <div>
                   <span className="item-info-cost">
@@ -327,7 +354,7 @@ export const PlayerShop = ({ currentUser }) => {
                       <u>Cost:</u>{" "}
                     </strong>
                   </span>
-                  {item.item?.cost} Gold
+                  {item.cost} Gold
                 </div>
                 <div>
                   <span className="item-info-cost">
@@ -340,7 +367,7 @@ export const PlayerShop = ({ currentUser }) => {
                 <div className="container-btns">
                   <button
                     className="item-btn"
-                    value={item.item.id}
+                    value={item.id}
                     onClick={handleSubmit}
                   >
                     Add to Cart

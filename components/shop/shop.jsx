@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { deleteShopItems, getShopItems } from "../../services/shopService";
 import { Filters } from "../filters/filter";
 import { getAllUnsoldItems } from "../../services/itemsService";
+import { getItemTags } from "../../services/tagsService";
 
 export const Shop = () => {
   const [allItems, setAllItems] = useState([]);
-  const [shopItems, setShopItems] = useState([])
+  const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
   const [tagFilter, setTagFilter] = useState(0);
+  const [allItemTags, setAllItemTags] = useState([])
 
   useEffect(() => {
     getAllUnsoldItems().then((array) => {
@@ -18,14 +20,22 @@ export const Shop = () => {
   }, []);
 
   useEffect(() => {
-    const newShopItems = []
-    {allItems.map((item) => {
-      if(item.shopItems.length == 1) {
-          newShopItems.push(item)
-      }
-      setShopItems(newShopItems)
-    })}
-  }, [allItems])
+    getItemTags().then((array) => {
+      setAllItemTags(array)
+    })
+  },[])
+
+  useEffect(() => {
+    const newShopItems = [];
+    {
+      allItems.map((item) => {
+        if (item.shopItems.length == 1) {
+          newShopItems.push(item);
+        }
+        setShopItems(newShopItems);
+      });
+    }
+  }, [allItems]);
 
   const handleDelete = (item) => {
     deleteShopItems(item.id).then(() => {
@@ -37,19 +47,29 @@ export const Shop = () => {
 
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 1);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 1
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 2);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 2
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 3);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 3
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 4);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 4
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 5);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 5
+      );
       setFilteredItems(filtered);
     } else {
       setFilteredItems(shopItems);
@@ -321,6 +341,16 @@ export const Shop = () => {
                   </strong>
                 </span>
                 {item.item?.cost} Gold
+              </div>
+              <div>
+                <strong>
+                  <u>Tags:</u>{" "}
+                </strong>
+                {allItemTags.map((tag) => {
+                  if (tag.itemId === item.id) {
+                    return <div>{tag.tag.name}</div>;
+                  }
+                })}
               </div>
               <div>
                 <span className="item-info-cost">
