@@ -7,16 +7,24 @@ import {
 } from "../../services/cartService";
 import { useNavigate } from "react-router";
 import { addGold, setCurrentUserGold } from "../../services/userServices";
+import { getShopItems, reduceQuantity } from "../../services/shopService";
 
 export const Cart = ({ currentUser }) => {
   const [cartItems, setCartItems] = useState([]);
   const [foundCartItems, setFoundCartItems] = useState([]);
+  const [shopItems, setShopItems] = useState([])
 
   useEffect(() => {
     getCartItems().then((array) => {
       setCartItems(array);
     });
   }, []);
+
+  useEffect(() => {
+    getShopItems().then((array) => {
+      setShopItems(array)
+    })
+  },[])
 
   useEffect(() => {
     const foundItems = cartItems.filter(
@@ -29,8 +37,23 @@ export const Cart = ({ currentUser }) => {
 
   let totalCost = 0;
 
-  const handleDelete = (item) => {
-    deleteCartItem(item.id).then(() => {
+  const handleDelete = (event) => {
+    console.log(event)
+    
+      {shopItems.map((shop) => {
+        if(shop.itemId === event.item.id){
+          let quantity = shop.quantity
+          const returnItem = {
+            itemId: shop.itemId,
+            rarityId: shop.rarityId,
+            name: shop.name,
+            quantity: quantity + 1,
+            id: shop.id
+          }
+          reduceQuantity(returnItem)
+        }
+      })}
+    deleteCartItem(event.id).then(() => {
       getCartItems().then((array) => {
         setCartItems(array);
       });
@@ -61,9 +84,6 @@ export const Cart = ({ currentUser }) => {
         });
       }
       const newPlayerTotal = totalGold - totalCost;
-      console.log(totalGold)
-      console.log(totalCost)
-      console.log(newPlayerTotal)
       const newPlayerInfo = {
         id: currentUser.id,
         gold: newPlayerTotal,

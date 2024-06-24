@@ -10,23 +10,23 @@ import { getAllUnsoldItems } from "../../services/itemsService";
 import { getItemTags } from "../../services/tagsService";
 
 export const PlayerShop = ({ currentUser }) => {
-  const [allItems, setAllItems] = useState([])
+  const [allItems, setAllItems] = useState([]);
   const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
   const [tagFilter, setTagFilter] = useState(0);
-  const [allItemTags, setAllItemTags] = useState([])
+  const [allItemTags, setAllItemTags] = useState([]);
 
   useEffect(() => {
-    getAllUnsoldItems().then((array) => setAllItems(array))
-  }, [])
+    getAllUnsoldItems().then((array) => setAllItems(array));
+  }, []);
 
   useEffect(() => {
     getItemTags().then((array) => {
-      setAllItemTags(array)
-    })
-  },[])
+      setAllItemTags(array);
+    });
+  }, []);
 
   useEffect(() => {
     const newShopItems = [];
@@ -38,23 +38,33 @@ export const PlayerShop = ({ currentUser }) => {
         setShopItems(newShopItems);
       });
     }
-  }, [allItems])
+  }, [allItems]);
 
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 1);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 1
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 2);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 2
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 3);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 3
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 4);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 4
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = shopItems.filter((item) => parseInt(item.rarityId) === 5);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 5
+      );
       setFilteredItems(filtered);
     } else {
       setFilteredItems(shopItems);
@@ -301,11 +311,11 @@ export const PlayerShop = ({ currentUser }) => {
         <div className="items">
           {filteredItems.map((item) => {
             let itemQuantity = 0;
-            {item.shopItems.map((shop) => {
-              return(
-                itemQuantity = shop.quantity
-              )
-            })};
+            {
+              item.shopItems.map((shop) => {
+                return (itemQuantity = shop.quantity);
+              });
+            }
             const handleSubmit = (event) => {
               event.preventDefault();
               const newItem = {
@@ -313,17 +323,18 @@ export const PlayerShop = ({ currentUser }) => {
                 userId: currentUser.id,
               };
               itemQuantity--;
-              {item.shopItems.map((shop) => {
-                const settingNewQuantity = {
-                  itemId: shop.itemId,
-                  rarityId: parseInt(shop.rarityId),
-                  name: shop.name,
-                  id: shop.id,
-                  quantity: itemQuantity,
-                };
-                reduceQuantity(settingNewQuantity);
-
-              })}
+              {
+                item.shopItems.map((shop) => {
+                  const settingNewQuantity = {
+                    itemId: shop.itemId,
+                    rarityId: parseInt(shop.rarityId),
+                    name: shop.name,
+                    id: shop.id,
+                    quantity: itemQuantity,
+                  };
+                  reduceQuantity(settingNewQuantity);
+                });
+              }
               AddItemToCart(newItem);
               window.location.reload();
             };
@@ -355,6 +366,19 @@ export const PlayerShop = ({ currentUser }) => {
                     </strong>
                   </span>
                   {item.cost} Gold
+                </div>
+                <div className="item-info-description">
+                  <span >
+                  <strong>
+                    <u>Tags:</u>{" "}
+                  </strong>
+
+                  </span>
+                  {allItemTags.map((tag) => {
+                    if (tag.itemId === item.id) {
+                      return <div>{tag.tag.name}</div>;
+                    }
+                  })}
                 </div>
                 <div>
                   <span className="item-info-cost">

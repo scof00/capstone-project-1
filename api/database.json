@@ -16,7 +16,7 @@
     },
     {
       "id": 3,
-      "gold": 421,
+      "gold": 371,
       "isAdmin": false,
       "name": "Kaitlyn",
       "password": "Solaya"
@@ -223,23 +223,18 @@
       "itemId": 2,
       "rarityId": 1,
       "name": "Potion of Healing",
-      "id": 1,
-      "quantity": 5
+      "quantity": 5,
+      "id": 1
     },
     {
       "itemId": 6,
       "rarityId": 2,
       "name": "Adamantine Armor",
-      "id": 2,
-      "quantity": 5
+      "quantity": 5,
+      "id": 2
     }
   ],
-  "carts": [
-    {
-      "itemId": "2",
-      "userId": 3,
-      "id": 1
-    }
-  ],
-  "purchasedItems": []
+  "carts": [],
+  "purchasedItems": [
+  ]
 }
