@@ -61,6 +61,9 @@ export const Cart = ({ currentUser }) => {
         });
       }
       const newPlayerTotal = totalGold - totalCost;
+      console.log(totalGold)
+      console.log(totalCost)
+      console.log(newPlayerTotal)
       const newPlayerInfo = {
         id: currentUser.id,
         gold: newPlayerTotal,
