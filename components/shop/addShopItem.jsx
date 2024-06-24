@@ -31,7 +31,7 @@ export const AddShopItem = () => {
 
 
   return (
-    <form className="add-item-container">
+    <form className="add-item-form">
       <h2>{item.name}</h2>
       <p><strong>Rarity: </strong> {item.rarity?.name}</p>
       <p><strong>Description: </strong>{item.description}</p>
@@ -51,7 +51,7 @@ export const AddShopItem = () => {
       </fieldset>
 
       <fieldset>
-        <button onClick={submitItem}>Add Item to Shop</button>
+        <button className="form-btn" onClick={submitItem}>Add Item to Shop</button>
       </fieldset>
     </form>
   );

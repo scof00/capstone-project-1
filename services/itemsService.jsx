@@ -1,4 +1,4 @@
-export const getAllUnsoldItems = () => {
+export const getAllUnsoldItems = async () => {
   return fetch(
     "http://localhost:8088/items?_expand=rarity&_embed=itemTags&_embed=shopItems"
   ).then((res) => res.json());
@@ -28,7 +28,7 @@ export const deleteItems = async (itemId) => {
   return fetch(`http://localhost:8088/items/${itemId}`, { method: "DELETE" });
 };
 
-export const createItem = (item) => {
+export const createItem = async (item) => {
   return fetch(`http://localhost:8088/items`, {
     method: "POST",
     headers: {
