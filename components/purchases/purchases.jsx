@@ -4,6 +4,7 @@ import { Filters } from "../filters/filter";
 import { getPurchasedItems } from "../../services/cartService";
 
 export const Purchases = () => {
+  //State that sets all purchased items from the database.
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -11,7 +12,7 @@ export const Purchases = () => {
       setItems(array);
     });
   }, []);
-
+  //DOM scrip that displays all purchased items and who they were purchased by.
   return (
     <div>
       <h1 className="page-title">Purchases</h1>

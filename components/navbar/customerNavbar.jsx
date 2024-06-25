@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllUsers, getUserById } from "../../services/userServices";
 
 export const CustomerNavbar = ({ currentUser }) => {
+  //Navbar component that appears on every page. It also displays the current gold of the current user.
   const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState([]);
 

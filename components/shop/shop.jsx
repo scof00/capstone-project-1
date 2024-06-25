@@ -5,6 +5,8 @@ import { getAllUnsoldItems } from "../../services/itemsService";
 import { getItemTags } from "../../services/tagsService";
 
 export const Shop = () => {
+  //This is the same exact setup as the playerShop. It serves as a DM view of the shop so that they can see what a normal user sees without having to logout.
+  //The only difference is that instead of an option add an item to your cart, there is a button to remove an item from the store.
   const [allItems, setAllItems] = useState([]);
   const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

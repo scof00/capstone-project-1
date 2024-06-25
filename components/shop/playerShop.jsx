@@ -10,8 +10,11 @@ import { getAllUnsoldItems } from "../../services/itemsService";
 import { getItemTags } from "../../services/tagsService";
 
 export const PlayerShop = ({ currentUser }) => {
+  //State for grabbing all items in the database.
   const [allItems, setAllItems] = useState([]);
+  //State that contains only items that are supposed to appear in the shop.
   const [shopItems, setShopItems] = useState([]);
+  //The following states are relevant for the filters.
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
@@ -27,7 +30,7 @@ export const PlayerShop = ({ currentUser }) => {
       setAllItemTags(array);
     });
   }, []);
-
+//Function to map through allItems an only grab out the items that are supposed to be displayed in the shop, and sets the appropriate state.
   useEffect(() => {
     const newShopItems = [];
     {
@@ -39,7 +42,7 @@ export const PlayerShop = ({ currentUser }) => {
       });
     }
   }, [allItems]);
-
+//Rarity filter
   useEffect(() => {
     if (itemFilter == 1) {
       const filtered = shopItems.filter(
@@ -70,7 +73,7 @@ export const PlayerShop = ({ currentUser }) => {
       setFilteredItems(shopItems);
     }
   }, [itemFilter, shopItems]);
-
+//Search filter
   useEffect(() => {
     const foundItem = shopItems.filter((item) => {
       return item?.name?.toLowerCase().includes(searchTerm.toLocaleLowerCase());
@@ -78,8 +81,7 @@ export const PlayerShop = ({ currentUser }) => {
     setFilteredItems(foundItem);
   }, [searchTerm, shopItems]);
 
-  // NEED TO EMBED SHOPITEMS, ITEM TAGS, AND EXPAND RARITIES ONTO ITEMS
-
+//Lines 82-297 are the ifElse statements for the tag filter.
   useEffect(() => {
     if (tagFilter == 0) {
       let filtered = shopItems;
@@ -296,7 +298,7 @@ export const PlayerShop = ({ currentUser }) => {
       setFilteredItems(filtered);
     }
   }, [tagFilter, shopItems]);
-
+//DOM script
   return (
     <>
       <h1 className="page-title">Shop</h1>
@@ -316,6 +318,7 @@ export const PlayerShop = ({ currentUser }) => {
                 return (itemQuantity = shop.quantity);
               });
             }
+            // Function for adding an item to the user's cart. It has to be located inside of the overarching map so that we can set the quantity after an item is added to the user's cart.
             const handleSubmit = (event) => {
               event.preventDefault();
               const newItem = {
@@ -368,11 +371,10 @@ export const PlayerShop = ({ currentUser }) => {
                   {item.cost} Gold
                 </div>
                 <div className="item-info-description">
-                  <span >
-                  <strong>
-                    <u>Tags:</u>{" "}
-                  </strong>
-
+                  <span>
+                    <strong>
+                      <u>Tags:</u>{" "}
+                    </strong>
                   </span>
                   {allItemTags.map((tag) => {
                     if (tag.itemId === item.id) {

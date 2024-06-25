@@ -5,7 +5,9 @@ import { getRarities } from "../../services/rarityservice";
 
 
 export const EditItem = () => {
+  //State for setting the selected item object
     const [item, setItem] = useState({})
+    //Sets state for rarities
     const [rarities, setRarities] = useState([])
 
 
@@ -24,10 +26,8 @@ export const EditItem = () => {
         })
     }, [])
 
-    const navigate = useNavigate(
-
-    )
-
+    const navigate = useNavigate()
+    //Function that saves the edited information for an item and then navigates back to the item page.
     const handleSave = (event) => {
         event.preventDefault()
         const editedItem = {
@@ -36,14 +36,13 @@ export const EditItem = () => {
             description: item.description,
             cost: item.cost,
             rarityId: item.rarityId,
-            purchased: false
 
         }
         updateItem(editedItem).then(() => {
             navigate("/")
         })
     }
-
+    //DOM script
   return (
     <div>
       <form className="add-item-form">

@@ -10,6 +10,7 @@ export const Filters = ({
   itemFilter,
   setTagFilter
 }) => {
+  //State for rarities and tags to create a filter component that we will call on several other pages.
   const [rarities, setRarities] = useState([]);
   const [tags, setTags] = useState([]);
 
@@ -19,7 +20,7 @@ export const Filters = ({
   useEffect(() => {
     getTags().then((array) => setTags(array));
   }, []);
-
+//DOM script
   return (
     <div className="item-display">
       <div className="filters">

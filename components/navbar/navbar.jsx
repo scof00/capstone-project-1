@@ -2,7 +2,7 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-
+//Navbar component that appears on every page.
   const navigate = useNavigate()
   return (
     <header>

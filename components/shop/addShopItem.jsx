@@ -5,6 +5,7 @@ import "./shop.css"
 import { AddItemToShop } from "../../services/shopService";
 
 export const AddShopItem = () => {
+  //State that will temporarily hold the item object before it is pushed to the shopItems database.
   const [item, setItem] = useState({});
   const { itemId } = useParams();
 
@@ -15,7 +16,7 @@ export const AddShopItem = () => {
   }, []);
 
   const navigate = useNavigate()
-
+//Function that handles the submission of a new item to appear in the shop.
   const submitItem = (event) => {
     event.preventDefault()
     const newItem = {
@@ -29,7 +30,7 @@ export const AddShopItem = () => {
       });
   }
 
-
+//DOM script for the form to add an item to the shop. This is where the DM will also set the quantity of the item as it appears in the shop.
   return (
     <form className="add-item-form">
       <h2>{item.name}</h2>

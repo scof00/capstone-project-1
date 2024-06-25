@@ -12,10 +12,11 @@ import { Link } from "react-router-dom";
 import { getItemTags } from "../../services/tagsService";
 
 export const ItemsList = () => {
+  //State that sets all items.
   const [items, setItems] = useState([]);
 
   const [allItemTags, setAllItemTags] = useState([]);
-
+  //The next four states are for setting the information related to filtering the items: by rarity, by tag, and by search term.
   const [searchTerm, setSearchTerm] = useState("");
 
   const [filteredItems, setFilteredItems] = useState([]);
@@ -41,7 +42,7 @@ export const ItemsList = () => {
       });
     });
   };
-
+//ElseIf statements to set filtered items that displays items by rarity.
   useEffect(() => {
     if (itemFilter == 1) {
       const filtered = items.filter((item) => parseInt(item.rarityId) === 1);
@@ -62,7 +63,7 @@ export const ItemsList = () => {
       setFilteredItems(items);
     }
   }, [itemFilter, items]);
-
+//ElseIf statements to set filtered items that displays items by tag. Is ~200 lines.
   useEffect(() => {
     if (tagFilter == 0) {
       let filtered = items;
@@ -279,17 +280,18 @@ export const ItemsList = () => {
       setFilteredItems(filtered);
     }
   }, [tagFilter, items]);
-
+//Sets filtered items based off of search term.
   useEffect(() => {
     const foundItem = items.filter((item) => {
       return item?.name?.toLowerCase().includes(searchTerm.toLocaleLowerCase());
     });
     setFilteredItems(foundItem);
   }, [searchTerm, items]);
-
+//DOM script to display items based off of filteredItems.
   return (
     <>
       <h1 className="page-title">All Items</h1>
+      {/* The following information needs to be passed to through the filters component as props. */}
       <Filters
         setTagFilter={setTagFilter}
         setSearchTerm={setSearchTerm}
@@ -299,11 +301,6 @@ export const ItemsList = () => {
       />
       <div className="items">
         {filteredItems.map((item) => {
-          // {item.itemTags.map((tag) => {
-          //   return (
-          //     console.log(tag.tagId)
-          //   )
-          // })}
           return (
             <div className="itemContainer" key={item.id}>
               <div className="item-info-item">
@@ -327,6 +324,7 @@ export const ItemsList = () => {
               </div>
               <div>
                 <u>Tags: </u>
+                {/* The tags that shop up on the items have to come from the mapped bridge table based off of item Id */}
                 {allItemTags.map((tag) => {
                   if (tag.itemId === item.id) {
                     return <div>{tag.tag.name}</div>;

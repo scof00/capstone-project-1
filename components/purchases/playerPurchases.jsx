@@ -3,7 +3,9 @@ import { getPurchasedItems } from "../../services/cartService";
 import "./purchases.css";
 
 export const PlayerPurchases = ({ currentUser }) => {
+  //State where all items from the purchasedItems table is stored.
   const [purchasedItems, setPurchasedItems] = useState([]);
+  //Purchased items is then filtered by user Id and stored in foundPurchasedItems
   const [foundPurchasedItems, setFoundPurchasedItems] = useState([]);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export const PlayerPurchases = ({ currentUser }) => {
     );
     setFoundPurchasedItems(foundItems);
   }, [purchasedItems]);
-
+//DOM Script that displays all items a user has purchased.
   return (
     <>
     <h1 className="page-title">Your Purchases</h1>

@@ -6,8 +6,10 @@ import { createItem, getAllUnsoldItems } from "../../services/itemsService";
 import { createItemTags, getTags } from "../../services/tagsService";
 
 export const AddItems = () => {
+  //State where the new item will be stored before submitting to the database.
   const [item, setItem] = useState({});
 
+  //The following states set the rarity dropdown menu and item tags that will be added to the created item.
   const [rarities, setRarities] = useState([]);
 
   const [tags, setTags] = useState([]);
@@ -31,8 +33,9 @@ export const AddItems = () => {
   }, []);
 
   const navigate = useNavigate();
+  //When tags are selected, they are added to this array, which is then mapped through later to be added to the itemTags bridge table.
   const selectedTags = [];
-
+  //Function that saves the new item to the database when the corresponding button is clicked. The item information is pulled from "item" state. The item tags is set by mapping through selectedTags and adding them to the itemTags bridge table. Then it redirects to the allItems page.
   const handleSave = (event) => {
     event.preventDefault();
     setItemTags(selectedTags);
@@ -60,7 +63,7 @@ export const AddItems = () => {
         navigate("/items");
       });
   };
-
+ //Script for displaying the "Add Item" form.
   return (
     <div>
       <form className="add-item-form">

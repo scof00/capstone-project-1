@@ -4,6 +4,7 @@ import "./players.css";
 import { Link } from "react-router-dom";
 
 export const Players = () => {
+  //Displays the user's name, password (which is their Player Character name), and gold. DM can click on a user to change their gold amount.
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -11,7 +12,7 @@ export const Players = () => {
       setUsers(array);
     });
   }, []);
-
+//DOM script
   return (
     <>
       <h1 className="page-title">Players</h1>

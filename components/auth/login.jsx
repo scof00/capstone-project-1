@@ -12,6 +12,7 @@ import { getUserByPassword } from "../../services/userServices"
 
 
 export const Login = () => {
+  //Login is copied from a New Force module. It is checking the users database to see if the entered password and corresponding user exists. It stores all user information in local_storage as shop_user to be used later.
   const [password, set] = useState("")
   const navigate = useNavigate()
 
@@ -38,7 +39,7 @@ export const Login = () => {
       }
     })
   }
-
+//DOM script for login page
   return (
     <main className="auth-container">
       <section>

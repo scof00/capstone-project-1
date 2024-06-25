@@ -3,6 +3,8 @@ import "./gold.css";
 import { addGold, getUserById } from "../../services/userServices";
 import { useNavigate, useParams } from "react-router";
 export const GoldForm = () => {
+    //This is the page for adding manually setting the gold for a user's account as the Dungeon Master (DM).
+    //DM selects a user to set the gold of.
     const [user, setUser] = useState({})
     const {userId} = useParams()
 
@@ -14,7 +16,7 @@ export const GoldForm = () => {
     },[])
 
     const navigate= useNavigate()
-
+    //This makes a PUT to set the corresponding user's gold.
     const handleSave = (event) => {
         event.preventDefault()
         const goldAdded ={
@@ -29,7 +31,7 @@ export const GoldForm = () => {
         )
     }
 
-
+  //DOM script
   return (
     <div>
       <form className="add-gold-form">

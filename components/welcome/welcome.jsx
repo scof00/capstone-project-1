@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import "./welcome.css"
 
 export const Welcome = () => {
+    //This is no longer in use
     return (
         <div className="welcome-container">
             <div className="welcome-text">
