@@ -341,66 +341,115 @@ export const PlayerShop = ({ currentUser }) => {
               AddItemToCart(newItem);
               window.location.reload();
             };
-            return (
-              <details className="itemContainer" key={item.id}>
-                <summary className="item-info-item">
-                  {item.name}
-                </summary>
-                <div className="item-info-rarity">
-                  <span >
-                    <strong>
-                      <u>Rarity:</u>{" "}
-                    </strong>{" "}
-                  </span>
-                  {item.rarity.name}
-                </div>
-                <div className="item-info-description">
-                  <span>
-                    <strong>
-                      <u>Description:</u>{" "}
-                    </strong>
-                  </span>
-                  {item.description}
-                </div>
-                <div className="item-info-cost">
-                  <span >
-                    <strong>
-                      <u>Cost:</u>{" "}
-                    </strong>
-                  </span>
-                  {item.cost} Gold
-                </div>
-                <div className="item-info-description">
-                  <span>
-                    <strong>
-                      <u>Tags:</u>{" "}
-                    </strong>
-                  </span>
-                  {allItemTags.map((tag) => {
-                    if (tag.itemId === item.id) {
-                      return <div>{tag.tag.name}</div>;
-                    }
-                  })}
-                </div>
-                <div>
-                  <span className="item-info-cost">
-                    <strong>
-                      <u>In stock:</u>{" "}
-                    </strong>
-                  </span>
-                  {itemQuantity}
-                </div>
-                <div className="container-btns">
-                  <button
-                    className="item-btn"
-                    value={item.id}
-                    onClick={handleSubmit}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </details>
-            );
+            if(itemQuantity > 0){
+              return(
+                  <details className="itemContainer" key={item.id}>
+                    <summary className="item-info-item">
+                      {item.name}
+                    </summary>
+                    <div className="item-info-rarity">
+                      <span >
+                        <strong>
+                          <u>Rarity:</u>{" "}
+                        </strong>{" "}
+                      </span>
+                      {item.rarity.name}
+                    </div>
+                    <div className="item-info-description">
+                      <span>
+                        <strong>
+                          <u>Description:</u>{" "}
+                        </strong>
+                      </span>
+                      {item.description}
+                    </div>
+                    <div className="item-info-cost">
+                      <span >
+                        <strong>
+                          <u>Cost:</u>{" "}
+                        </strong>
+                      </span>
+                      {item.cost} Gold
+                    </div>
+                    <div className="item-info-description">
+                      <span>
+                        <strong>
+                          <u>Tags:</u>{" "}
+                        </strong>
+                      </span>
+                      {allItemTags.map((tag) => {
+                        if (tag.itemId === item.id) {
+                          return <div>{tag.tag.name}</div>;
+                        }
+                      })}
+                    </div>
+                    <div className="item-info-cost">
+                      <span >
+                        <strong>
+                          <u>In stock:</u>{" "}
+                        </strong>
+                      </span>
+                      {itemQuantity}
+                    </div>
+                    <div className="container-btns">
+                      <button
+                        className="item-btn"
+                        value={item.id}
+                        onClick={handleSubmit}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </details>
+              )
+            } else {
+              return(
+                <details className="itemContainer" key={item.id}>
+                  <summary className="item-info-item">
+                    {item.name}
+                  </summary>
+                  <div className="item-info-rarity">
+                    <span >
+                      <strong>
+                        <u>Rarity:</u>{" "}
+                      </strong>{" "}
+                    </span>
+                    {item.rarity.name}
+                  </div>
+                  <div className="item-info-description">
+                    <span>
+                      <strong>
+                        <u>Description:</u>{" "}
+                      </strong>
+                    </span>
+                    {item.description}
+                  </div>
+                  <div className="item-info-cost">
+                    <span >
+                      <strong>
+                        <u>Cost:</u>{" "}
+                      </strong>
+                    </span>
+                    {item.cost} Gold
+                  </div>
+                  <div className="item-info-description">
+                    <span>
+                      <strong>
+                        <u>Tags:</u>{" "}
+                      </strong>
+                    </span>
+                    {allItemTags.map((tag) => {
+                      if (tag.itemId === item.id) {
+                        return <div>{tag.tag.name}</div>;
+                      }
+                    })}
+                  </div>
+                  <div className="item-info-cost">
+                    <p><u>Out of stock</u></p>
+                  </div>
+                </details>
+            )
+            }
           })}
         </div>
       </div>
