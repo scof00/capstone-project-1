@@ -27,13 +27,14 @@ body{
     width: 20%;
     flex-direction: column;
     align-items: baseline;
-    background-color: rgba(255,255,255, 0.80);
+    background-color: white;
     border-radius: 10px;
     padding: 5px;
     margin: 5px;
-    border: 1px solid black;
+    border: 2px solid #783f04;
     height: fit-content;
     overflow: auto;
+    padding: 5px;
 }
 
 .item-info-description{
@@ -75,4 +76,11 @@ img{
     border: 5px outset goldenrod;
     border-radius: 15px;
     margin: 10px;
+}
+.item-info-rarity{
+    text-align: left;
+}
+
+.item-info-cost{
+    text-align: left;
 }

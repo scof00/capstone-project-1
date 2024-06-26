@@ -54,7 +54,7 @@ export const GoldForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <button onClick={handleSave}>Add Gold</button>
+                <button onClick={handleSave} className="form-btn">Add Gold</button>
             </fieldset>
         </div>
       </form>

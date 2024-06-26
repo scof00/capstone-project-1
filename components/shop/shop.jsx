@@ -13,7 +13,7 @@ export const Shop = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [itemFilter, setItemFilter] = useState(0);
   const [tagFilter, setTagFilter] = useState(0);
-  const [allItemTags, setAllItemTags] = useState([])
+  const [allItemTags, setAllItemTags] = useState([]);
 
   useEffect(() => {
     getAllUnsoldItems().then((array) => {
@@ -23,9 +23,9 @@ export const Shop = () => {
 
   useEffect(() => {
     getItemTags().then((array) => {
-      setAllItemTags(array)
-    })
-  },[])
+      setAllItemTags(array);
+    });
+  }, []);
 
   useEffect(() => {
     const newShopItems = [];
@@ -315,13 +315,17 @@ export const Shop = () => {
 
       <div className="items">
         {filteredItems.map((item) => {
+          let itemQuantity = 0;
+          {
+            item.shopItems.map((shop) => {
+              return (itemQuantity = shop.quantity);
+            });
+          }
           return (
-            <div className="itemContainer" key={item.id}>
-              <div className="item-info-item">
-                <h2>{item.name}</h2>
-              </div>
-              <div>
-                <span className="item-info-rarity">
+            <details className="itemContainer" key={item.id}>
+              <summary className="item-info-item">{item.name}</summary>
+              <div className="item-info-rarity">
+                <span >
                   <strong>
                     <u>Rarity:</u>{" "}
                   </strong>{" "}
@@ -334,17 +338,17 @@ export const Shop = () => {
                     <u>Description:</u>{" "}
                   </strong>
                 </span>
-                {item.item?.description}
+                {item.description}
               </div>
-              <div>
-                <span className="item-info-cost">
+              <div className="item-info-cost">
+                <span >
                   <strong>
                     <u>Cost:</u>{" "}
                   </strong>
                 </span>
                 {item.item?.cost} Gold
               </div>
-              <div>
+              <div className="item-info-cost">
                 <strong>
                   <u>Tags:</u>{" "}
                 </strong>
@@ -354,20 +358,20 @@ export const Shop = () => {
                   }
                 })}
               </div>
-              <div>
-                <span className="item-info-cost">
+              <div className="item-info-cost">
+                <span>
                   <strong>
                     <u>In stock:</u>{" "}
                   </strong>
                 </span>
-                {item.quantity}
+                {itemQuantity}
               </div>
               <div className="container-btns">
                 <button className="item-btn" onClick={() => handleDelete(item)}>
                   Remove
                 </button>
               </div>
-            </div>
+            </details>
           );
         })}
       </div>

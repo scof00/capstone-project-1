@@ -137,7 +137,7 @@ export const Cart = ({ currentUser }) => {
           <p>Total: {totalCost}</p>
         </div>
         <div>
-          <button onClick={handleBuy}>Purchase</button>
+          <button onClick={handleBuy} className="form-btn">Purchase</button>
         </div>
       </div>
     </div>

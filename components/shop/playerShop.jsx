@@ -342,12 +342,12 @@ export const PlayerShop = ({ currentUser }) => {
               window.location.reload();
             };
             return (
-              <div className="itemContainer" key={item.id}>
-                <div className="item-info-item">
-                  <h2>{item.name}</h2>
-                </div>
-                <div>
-                  <span className="item-info-rarity">
+              <details className="itemContainer" key={item.id}>
+                <summary className="item-info-item">
+                  {item.name}
+                </summary>
+                <div className="item-info-rarity">
+                  <span >
                     <strong>
                       <u>Rarity:</u>{" "}
                     </strong>{" "}
@@ -362,8 +362,8 @@ export const PlayerShop = ({ currentUser }) => {
                   </span>
                   {item.description}
                 </div>
-                <div>
-                  <span className="item-info-cost">
+                <div className="item-info-cost">
+                  <span >
                     <strong>
                       <u>Cost:</u>{" "}
                     </strong>
@@ -399,7 +399,7 @@ export const PlayerShop = ({ currentUser }) => {
                     Add to Cart
                   </button>
                 </div>
-              </div>
+              </details>
             );
           })}
         </div>

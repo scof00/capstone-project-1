@@ -302,12 +302,10 @@ export const ItemsList = () => {
       <div className="items">
         {filteredItems.map((item) => {
           return (
-            <div className="itemContainer" key={item.id}>
-              <div className="item-info-item">
-                <h2>{item.name}</h2>
-              </div>
-              <div>
-                <span className="item-info-rarity">
+            <details className="itemContainer" key={item.id}>
+              <summary>{item.name}</summary>
+              <div className="item-info-rarity">
+                <span>
                   <strong>
                     <u>Rarity:</u>{" "}
                   </strong>{" "}
@@ -322,7 +320,7 @@ export const ItemsList = () => {
                 </span>
                 {item.description}
               </div>
-              <div>
+              <div className="item-info-rarity">
                 <u>Tags: </u>
                 {/* The tags that shop up on the items have to come from the mapped bridge table based off of item Id */}
                 {allItemTags.map((tag) => {
@@ -331,7 +329,7 @@ export const ItemsList = () => {
                   }
                 })}
               </div>
-              <div>
+              <div className="item-info-rarity">
                 <span className="item-info-cost">
                   <strong>
                     <u>Cost:</u>{" "}
@@ -350,7 +348,7 @@ export const ItemsList = () => {
                   <button className="item-btn">Add to shop</button>
                 </Link>
               </div>
-            </div>
+            </details>
           );
         })}
       </div>
