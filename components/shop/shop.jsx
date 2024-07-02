@@ -40,11 +40,17 @@ export const Shop = () => {
   }, [allItems]);
 
   const handleDelete = (item) => {
-    deleteShopItems(item.id).then(() => {
-      getShopItems().then((array) => {
-        setShopItems(array);
+    console.log(item)
+    {item.shopItems.map((shopItem) => {
+      deleteShopItems(shopItem.id)
+      .then(() => {
+        getAllUnsoldItems().then((array) => {
+          setAllItems(array)
+        })
       });
-    });
+      
+    })}
+
   };
 
   useEffect(() => {

@@ -16,7 +16,7 @@
     },
     {
       "id": 3,
-      "gold": 371,
+      "gold": 175,
       "isAdmin": false,
       "name": "Kaitlyn",
       "password": "Solaya"
@@ -46,10 +46,10 @@
   "items": [
     {
       "name": "Potion of Healing",
+      "id": 2,
       "description": "You regain \t2d4 + 2 hit points when you drink this potion.",
-      "cost": "50",
-      "rarityId": "1",
-      "id": 2
+      "cost": "25",
+      "rarityId": "1"
     },
     {
       "name": "Potion of Greater Healing",
@@ -233,6 +233,13 @@
       "cost": "6000",
       "rarityId": "5",
       "id": 28
+    },
+    {
+      "name": "Fire Resistance Potion",
+      "description": "Fire Resistant",
+      "cost": "25",
+      "rarityId": "1",
+      "id": 29
     }
   ],
   "rarities": [
@@ -539,6 +546,11 @@
       "tagId": 9,
       "itemId": 28,
       "id": 47
+    },
+    {
+      "tagId": 3,
+      "itemId": 29,
+      "id": 48
     }
   ],
   "shopItems": [
@@ -546,7 +558,7 @@
       "itemId": 2,
       "rarityId": 1,
       "name": "Potion of Healing",
-      "quantity": 5,
+      "quantity": 1,
       "id": 1
     },
     {
@@ -555,8 +567,43 @@
       "name": "Adamantine Armor",
       "quantity": 5,
       "id": 2
+    },
+    {
+      "itemId": 12,
+      "rarityId": 2,
+      "name": "Emerald Pen",
+      "quantity": 2,
+      "id": 3
+    },
+    {
+      "name": "Fire Resistance Potion",
+      "rarityId": "1",
+      "itemId": 29,
+      "quantity": "5",
+      "id": 4
     }
   ],
   "carts": [],
-  "purchasedItems": []
+  "purchasedItems": [
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 4
+    }
+  ]
 }

@@ -41,6 +41,7 @@ export const AddShopItem = () => {
         <label><strong>Quantity: </strong></label>
         <input
         type="number"
+        required
         placeholder="# of this item available"
         onChange={(event) => {
             const itemCopy = {...item}

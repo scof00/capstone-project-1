@@ -14,14 +14,14 @@ export const getShopItems = () => {
   ).then((res) => res.json());
 };
 
-export const deleteShopItems = async (itemId) => {
-  return fetch(`http://localhost:8088/shopItems/${itemId}`, {
+export const deleteShopItems = async (item) => {
+  return fetch(`http://localhost:8088/shopItems/${item}`, {
     method: "DELETE",
   });
 };
 
 export const reduceQuantity = (item) => {
-  return fetch(`http://localhost:8088/shopItems/${item.id}`, {
+  return fetch(`http://localhost:8088/shopItems/itemId=${item}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
