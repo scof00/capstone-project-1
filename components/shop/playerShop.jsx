@@ -326,20 +326,21 @@ export const PlayerShop = ({ currentUser }) => {
                 userId: currentUser.id,
               };
               itemQuantity--;
-              {
-                item.shopItems.map((shop) => {
-                  const settingNewQuantity = {
-                    itemId: shop.itemId,
-                    rarityId: parseInt(shop.rarityId),
-                    name: shop.name,
-                    id: shop.id,
-                    quantity: itemQuantity,
-                  };
-                  reduceQuantity(settingNewQuantity);
-                });
-              }
+              console.log(itemQuantity)
+              // {
+              //   item.shopItems?.map((shop) => {
+              //     const settingNewQuantity = {
+              //       itemId: shop.itemId,
+              //       rarityId: parseInt(shop.rarityId),
+              //       name: shop.name,
+              //       id: shop.id,
+              //       quantity: itemQuantity,
+              //     };
+              // reduceQuantity(settingNewQuantity);
+              //   });
+              // }
               AddItemToCart(newItem);
-              window.location.reload();
+              // window.location.reload();
             };
             if(itemQuantity > 0){
               return(
@@ -383,19 +384,19 @@ export const PlayerShop = ({ currentUser }) => {
                         }
                       })}
                     </div>
-                    <div className="item-info-cost">
+                    {/* <div className="item-info-cost">
                       <span >
                         <strong>
                           <u>In stock:</u>{" "}
                         </strong>
                       </span>
                       {itemQuantity}
-                    </div>
+                    </div> */}
                     <div className="container-btns">
                       <button
                         className="item-btn"
                         value={item.id}
-                        onClick={handleSubmit}
+                        onClick={(e) => {handleSubmit(e)}}
                       >
                         Add to Cart
                       </button>

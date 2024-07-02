@@ -364,14 +364,14 @@ export const Shop = () => {
                   }
                 })}
               </div>
-              <div className="item-info-cost">
+              {/* <div className="item-info-cost">
                 <span>
                   <strong>
                     <u>In stock:</u>{" "}
                   </strong>
                 </span>
                 {itemQuantity}
-              </div>
+              </div> */}
               <div className="container-btns">
                 <button className="item-btn" onClick={() => handleDelete(item)}>
                   Remove

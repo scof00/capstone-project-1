@@ -9,14 +9,14 @@
     },
     {
       "id": 2,
-      "gold": "500",
+      "gold": 475,
       "isAdmin": false,
       "name": "Maddie",
       "password": "Calliope"
     },
     {
       "id": 3,
-      "gold": 175,
+      "gold": "200",
       "isAdmin": false,
       "name": "Kaitlyn",
       "password": "Solaya"
@@ -558,7 +558,7 @@
       "itemId": 2,
       "rarityId": 1,
       "name": "Potion of Healing",
-      "quantity": 1,
+      "quantity": 2,
       "id": 1
     },
     {
@@ -579,7 +579,7 @@
       "name": "Fire Resistance Potion",
       "rarityId": "1",
       "itemId": 29,
-      "quantity": "5",
+      "quantity": 5,
       "id": 4
     }
   ],
@@ -604,6 +604,11 @@
       "userId": 3,
       "itemId": "2",
       "id": 4
+    },
+    {
+      "userId": 2,
+      "itemId": "2",
+      "id": 5
     }
   ]
 }

@@ -20,8 +20,8 @@ export const deleteShopItems = async (item) => {
   });
 };
 
-export const reduceQuantity = (item) => {
-  return fetch(`http://localhost:8088/shopItems/itemId=${item}`, {
+export const reduceQuantity = async (item) => {
+  return fetch(`http://localhost:8088/shopItems?itemId=${item.itemId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

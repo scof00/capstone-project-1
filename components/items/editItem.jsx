@@ -39,7 +39,7 @@ export const EditItem = () => {
 
         }
         updateItem(editedItem).then(() => {
-            navigate("/")
+            navigate("/items")
         })
     }
     //DOM script
