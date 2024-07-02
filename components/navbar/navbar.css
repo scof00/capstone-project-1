@@ -11,6 +11,26 @@
     border-color: #783f04;
     border-width: 5px;
     font-family: 'luminari', sans-serif;
+    padding-right: 10px;
+    padding-left: 10px;
+
+
+}
+
+.navbar-customer {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: auto;
+    background-color: #E5DFCF;
+    border-style: outset;
+    border-radius: 25px;
+    border-color: #783f04;
+    border-width: 5px;
+    font-family: 'luminari', sans-serif;
+    padding-right: 10px;
+    padding-left: 10px;
 
 }
 
@@ -18,4 +38,16 @@
     color: black;
     text-align: center;
     margin: 5px;
+}
+
+.player-gold{
+    background-color: #E5DFCF;
+    border-style: outset;
+    border-radius: 25px;
+    border-color: #783f04;
+    border-width: 5px;
+    font-family: 'luminari', sans-serif;
+    width: fit-content;
+    padding: 10px;
+    float: left;
 }

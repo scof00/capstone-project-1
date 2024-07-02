@@ -1,32 +1,24 @@
 import { useEffect, useState } from "react";
-import {
-  changItemStatus,
-  deleteItems,
-  getAllUnsoldItems,
-  getItemsFromItemTags,
-} from "../../services/itemsService";
-import "./items.css";
-
+import { deleteShopItems, getShopItems } from "../../services/shopService";
 import { Filters } from "../filters/filter";
-import { Link } from "react-router-dom";
+import { getAllUnsoldItems } from "../../services/itemsService";
 import { getItemTags } from "../../services/tagsService";
 
-export const ItemsList = () => {
-  //State that sets all items.
-  const [items, setItems] = useState([]);
-
-  const [allItemTags, setAllItemTags] = useState([]);
-  //The next four states are for setting the information related to filtering the items: by rarity, by tag, and by search term.
+export const Shop = () => {
+  //This is the same exact setup as the playerShop. It serves as a DM view of the shop so that they can see what a normal user sees without having to logout.
+  //The only difference is that instead of an option add an item to your cart, there is a button to remove an item from the store.
+  const [allItems, setAllItems] = useState([]);
+  const [shopItems, setShopItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
   const [filteredItems, setFilteredItems] = useState([]);
-
   const [itemFilter, setItemFilter] = useState(0);
-
   const [tagFilter, setTagFilter] = useState(0);
+  const [allItemTags, setAllItemTags] = useState([]);
 
   useEffect(() => {
-    getAllUnsoldItems().then((itemsArray) => setItems(itemsArray));
+    getAllUnsoldItems().then((array) => {
+      setAllItems(array);
+    });
   }, []);
 
   useEffect(() => {
@@ -35,43 +27,78 @@ export const ItemsList = () => {
     });
   }, []);
 
-  const handleDelete = (item) => {
-    deleteItems(item.id).then(() => {
-      getAllUnsoldItems().then((array) => {
-        setItems(array);
+  useEffect(() => {
+    const newShopItems = [];
+    {
+      allItems.map((item) => {
+        if (item.shopItems.length == 1) {
+          newShopItems.push(item);
+        }
+        setShopItems(newShopItems);
       });
-    });
+    }
+  }, [allItems]);
+
+  const handleDelete = (item) => {
+    console.log(item)
+    {item.shopItems.map((shopItem) => {
+      deleteShopItems(shopItem.id)
+      .then(() => {
+        getAllUnsoldItems().then((array) => {
+          setAllItems(array)
+        })
+      });
+      
+    })}
+
   };
-//ElseIf statements to set filtered items that displays items by rarity.
+
   useEffect(() => {
     if (itemFilter == 1) {
-      const filtered = items.filter((item) => parseInt(item.rarityId) === 1);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 1
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 2) {
-      const filtered = items.filter((item) => parseInt(item.rarity.id) === 2);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 2
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 3) {
-      const filtered = items.filter((item) => parseInt(item.rarity.id) === 3);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 3
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 4) {
-      const filtered = items.filter((item) => parseInt(item.rarity.id) === 4);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 4
+      );
       setFilteredItems(filtered);
     } else if (itemFilter == 5) {
-      const filtered = items.filter((item) => parseInt(item.rarity.id) === 5);
+      const filtered = shopItems.filter(
+        (item) => parseInt(item.rarityId) === 5
+      );
       setFilteredItems(filtered);
     } else {
-      setFilteredItems(items);
+      setFilteredItems(shopItems);
     }
-  }, [itemFilter, items]);
-//ElseIf statements to set filtered items that displays items by tag. Is ~200 lines.
+  }, [itemFilter, shopItems]);
+
+  useEffect(() => {
+    const foundItem = shopItems.filter((item) => {
+      return item?.name?.toLowerCase().includes(searchTerm.toLocaleLowerCase());
+    });
+    setFilteredItems(foundItem);
+  }, [searchTerm, shopItems]);
+
   useEffect(() => {
     if (tagFilter == 0) {
-      let filtered = items;
+      let filtered = shopItems;
       setFilteredItems(filtered);
     } else if (tagFilter == 1) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 1) {
@@ -85,7 +112,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 2) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 2) {
@@ -99,7 +126,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 3) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 3) {
@@ -113,7 +140,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 4) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 4) {
@@ -127,7 +154,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 5) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 5) {
@@ -141,7 +168,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 6) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 6) {
@@ -155,7 +182,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 7) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 7) {
@@ -169,7 +196,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 8) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 8) {
@@ -183,7 +210,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 9) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 9) {
@@ -197,7 +224,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 10) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 10) {
@@ -211,7 +238,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 11) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 11) {
@@ -225,7 +252,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 12) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 12) {
@@ -239,7 +266,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 13) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 13) {
@@ -253,7 +280,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 14) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 14) {
@@ -267,7 +294,7 @@ export const ItemsList = () => {
     } else if (tagFilter == 15) {
       let filtered = [];
       {
-        items.map((item) => {
+        shopItems.map((item) => {
           {
             item.itemTags.map((tag) => {
               if (tag.tagId === 15) {
@@ -279,19 +306,11 @@ export const ItemsList = () => {
       }
       setFilteredItems(filtered);
     }
-  }, [tagFilter, items]);
-//Sets filtered items based off of search term.
-  useEffect(() => {
-    const foundItem = items.filter((item) => {
-      return item?.name?.toLowerCase().includes(searchTerm.toLocaleLowerCase());
-    });
-    setFilteredItems(foundItem);
-  }, [searchTerm, items]);
-//DOM script to display items based off of filteredItems.
+  }, [tagFilter, shopItems]);
+
   return (
     <>
-      <h1 className="page-title">All Items</h1>
-      {/* The following information needs to be passed to through the filters component as props. */}
+      <h1 className="page-title">Shop</h1>
       <Filters
         setTagFilter={setTagFilter}
         setSearchTerm={setSearchTerm}
@@ -299,13 +318,20 @@ export const ItemsList = () => {
         itemFilter={itemFilter}
         searchTerm={searchTerm}
       />
+
       <div className="items">
         {filteredItems.map((item) => {
+          let itemQuantity = 0;
+          {
+            item.shopItems.map((shop) => {
+              return (itemQuantity = shop.quantity);
+            });
+          }
           return (
             <details className="itemContainer" key={item.id}>
-              <summary>{item.name}</summary>
+              <summary className="item-info-item">{item.name}</summary>
               <div className="item-info-rarity">
-                <span>
+                <span >
                   <strong>
                     <u>Rarity:</u>{" "}
                   </strong>{" "}
@@ -320,33 +346,36 @@ export const ItemsList = () => {
                 </span>
                 {item.description}
               </div>
-              <div className="item-info-rarity">
-                <u>Tags: </u>
-                {/* The tags that shop up on the items have to come from the mapped bridge table based off of item Id */}
+              <div className="item-info-cost">
+                <span >
+                  <strong>
+                    <u>Cost:</u>{" "}
+                  </strong>
+                </span>
+                {item.item?.cost} Gold
+              </div>
+              <div className="item-info-cost">
+                <strong>
+                  <u>Tags:</u>{" "}
+                </strong>
                 {allItemTags.map((tag) => {
                   if (tag.itemId === item.id) {
                     return <div>{tag.tag.name}</div>;
                   }
                 })}
               </div>
-              <div className="item-info-rarity">
-                <span className="item-info-cost">
+              {/* <div className="item-info-cost">
+                <span>
                   <strong>
-                    <u>Cost:</u>{" "}
+                    <u>In stock:</u>{" "}
                   </strong>
                 </span>
-                {item.cost} Gold
-              </div>
+                {itemQuantity}
+              </div> */}
               <div className="container-btns">
                 <button className="item-btn" onClick={() => handleDelete(item)}>
-                  Delete
+                  Remove
                 </button>
-                <Link to={`/items/edit/${item.id}`}>
-                  <button className="item-btn">Edit</button>
-                </Link>
-                <Link to={`/items/addShopItem/${item.id}`}>
-                  <button className="item-btn">Add to shop</button>
-                </Link>
               </div>
             </details>
           );

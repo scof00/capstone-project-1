@@ -1,18 +1,35 @@
 import { useEffect, useState } from "react";
 import { getRarities } from "../../services/rarityservice";
-import"./filter.css"
+import "./filter.css";
+import { getTags } from "../../services/tagsService";
 
-export const Filters = ({setSearchTerm, setItemFilter, searchTerm, itemFilter}) => {
-    const [rarities, setRarities] = useState([]);
-    useEffect(() => {
-        getRarities().then((raritiesArray) => setRarities(raritiesArray));
-      }, []);
-return (
+export const Filters = ({
+  setSearchTerm,
+  setItemFilter,
+  searchTerm,
+  itemFilter,
+  setTagFilter
+}) => {
+  //State for rarities and tags to create a filter component that we will call on several other pages.
+  const [rarities, setRarities] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    getRarities().then((raritiesArray) => setRarities(raritiesArray));
+  }, []);
+  useEffect(() => {
+    getTags().then((array) => setTags(array));
+  }, []);
+//DOM script
+  return (
     <div className="item-display">
       <div className="filters">
-        <select className="rarity-filter" onChange={(event) => {
-          return setItemFilter(event.target.value)
-        }}>
+        <select
+          className="rarity-filter"
+          onChange={(event) => {
+            return setItemFilter(parseInt(event.target.value));
+          }}
+        >
           <option value="0">Sort by Rarity</option>
           {rarities.map((rarity) => {
             return (
@@ -22,16 +39,30 @@ return (
             );
           })}
         </select>
-      <input
+        <input
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          value={searchTerm}
+          type="text"
+          placeholder="Search Items"
+          className="item-search"
+        />
+        <select className="rarity-filter"
         onChange={(event) => {
-          setSearchTerm(event.target.value);
+          return setTagFilter(parseInt(event.target.value))
         }}
-        value={searchTerm}
-        type="text"
-        placeholder="Search Items"
-        className="item-search"
-      />
+        >
+          <option value="0">Sort by Tag</option>
+          {tags.map((tag) => {
+            return(
+              <option key={tag.id} value={tag.id}>
+                {tag.name}
+              </option>
+            )
+          })}
+        </select>
       </div>
-      </div>
-)
-}
+    </div>
+  );
+};

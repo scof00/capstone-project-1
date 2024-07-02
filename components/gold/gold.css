@@ -1,4 +1,4 @@
-.add-item-form{
+.add-gold-form{
     background-color: #E5DFCF;
     margin: auto;
     width: fit-content;
@@ -10,6 +10,9 @@
     border-radius: 25px;
     border-color: #783f04;
     border-width: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .inputs{

@@ -1,0 +1,39 @@
+.cart{
+    background-color: #E5DFCF;
+    margin: auto;
+    width: fit-content;
+    font-family: 'luminari', sans-serif;
+    color: black;
+    margin-top: 20px;
+    padding: 10px;
+    border-style: outset;
+    border-radius: 25px;
+    border-color: #783f04;
+    border-width: 5px;
+}
+
+.cart-item{
+    display: flex;
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.remove-item{
+    background: none;
+    height: fit-content;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.price {
+    text-align: right;
+}
+
+.go-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: auto;
+}

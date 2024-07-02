@@ -4,65 +4,242 @@
       "id": 1,
       "name": "Seth",
       "password": "DM",
-      "isAdmin": true
+      "isAdmin": true,
+      "gold": 0
     },
     {
       "id": 2,
+      "gold": 475,
+      "isAdmin": false,
       "name": "Maddie",
-      "password": "Calliope",
-      "isAdmin": false
+      "password": "Calliope"
     },
     {
       "id": 3,
+      "gold": "200",
+      "isAdmin": false,
       "name": "Kaitlyn",
-      "password": "Solaya",
-      "isAdmin": false
+      "password": "Solaya"
     },
     {
       "id": 4,
+      "gold": "614",
+      "isAdmin": false,
       "name": "Justin",
-      "password": "Sum",
-      "isAdmin": false
+      "password": "Sum"
     },
     {
       "id": 5,
+      "gold": "312",
+      "isAdmin": false,
       "name": "Will",
-      "password": "Jeb",
-      "isAdmin": false
+      "password": "Jeb"
     },
     {
       "id": 6,
+      "gold": "222",
+      "isAdmin": false,
       "name": "Jacob",
-      "password": "Tator",
-      "isAdmin": false
+      "password": "Tator"
     }
   ],
   "items": [
     {
-      "id": 1,
       "name": "Potion of Healing",
-      "rarityId": 1,
-      "description": "You regain 2d4+2 hit points when you drink this potion. Drinking or administering a potion takes an action.",
-      "cost": 50,
-      "image": "https://ih1.redbubble.net/image.1305752452.7153/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg",
-      "purchased": false,
-      "rarity": {
-        "id": 1,
-        "name": "Common"
-      }
+      "id": 2,
+      "description": "You regain \t2d4 + 2 hit points when you drink this potion.",
+      "cost": "25",
+      "rarityId": "1"
     },
     {
-      "id": 2,
-      "name": "Potion of Climbing",
-      "rarityId": 1,
-      "description": "When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength (Athletics) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors.",
-      "cost": 50,
-      "image": "https://images.squarespace-cdn.com/content/v1/52c8e848e4b06ad2e570480f/282f3f01-eae1-46b4-a6bd-72c67e89f112/potion+of+climbing.png",
-      "purchased": false,
-      "rarity": {
-        "id": 1,
-        "name": "Common"
-      }
+      "name": "Potion of Greater Healing",
+      "description": "You regain \t4d4 + 4 hit points when you drink this potion.",
+      "cost": "249",
+      "rarityId": "2",
+      "id": 3
+    },
+    {
+      "name": "Potion of Superior Healing",
+      "description": "You regain \t8d4 + 8 hit points when you drink this potion.",
+      "cost": "500",
+      "rarityId": "3",
+      "id": 4
+    },
+    {
+      "name": "Potion of Supreme Healing",
+      "description": "You regain \t10d4 + 20 hit points when you drink this potion.",
+      "cost": "1000",
+      "rarityId": "4",
+      "id": 5
+    },
+    {
+      "name": "Adamantine Armor",
+      "description": "This suit of armor is reinforced with adamantine, one of the hardest substances in existence. While you're wearing it, any critical hit against you becomes a normal hit.",
+      "cost": "500",
+      "rarityId": "2",
+      "id": 6
+    },
+    {
+      "name": "Amulet of Proof Against Detection and Location",
+      "description": "While wearing this amulet, you are hidden from divination magic. You can't be targeted by such magic or perceived through magical scrying sensors.",
+      "cost": "249",
+      "rarityId": "2",
+      "id": 7
+    },
+    {
+      "name": "Medal of Muscle",
+      "description": "You can squeeze this medal tightly in the palm of your hand as an action. Doing so gives you advantage on Strength checks and Strength saving throws for 1 hour. Once this property has been used, it can’t be used again, and the medal becomes nonmagical.",
+      "cost": "299",
+      "rarityId": "1",
+      "id": 8
+    },
+    {
+      "name": "Smoldering Armor",
+      "description": "Wisps of harmless, odorless smoke rise from this armor while it is worn",
+      "cost": "150",
+      "rarityId": "1",
+      "id": 9
+    },
+    {
+      "name": "Thermal Cube",
+      "description": "This 3-inch cube of solid brimstone generates enough dry heat to keep the temperature within 15 feet of it at 95 degrees Fahrenheit (35 degrees Celsius).",
+      "cost": "497",
+      "rarityId": "1",
+      "id": 10
+    },
+    {
+      "name": "Circlet of Blasting",
+      "description": "While wearing this circlet, you can use an action to cast the Scorching Ray spell with it. When you make the spell's attacks, you do so with an attack bonus of +5. The circlet can't be used this way again until the next dawn.",
+      "cost": "350",
+      "rarityId": "2",
+      "id": 11
+    },
+    {
+      "name": "Emerald Pen",
+      "description": "This pen is tipped with an emerald nib and requires no ink to write. While holding this pen, you can cast Illusory Script at will, requiring no material components.",
+      "cost": "439",
+      "rarityId": "2",
+      "id": 12
+    },
+    {
+      "name": "Eyes of the Eagle",
+      "description": "These crystal lenses fit over the eyes. While wearing them, you have advantage on Wisdom (Perception) checks that rely on sight. In conditions of clear visibility, you can make out details of even extremely distant creatures and objects as small as 2 feet across.",
+      "cost": "374",
+      "rarityId": "2",
+      "id": 13
+    },
+    {
+      "name": "Goggles of Night",
+      "description": "While wearing these dark lenses, you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the goggles increases its range by 60 feet.",
+      "cost": "400",
+      "rarityId": "2",
+      "id": 14
+    },
+    {
+      "name": "Hat of Disguise",
+      "description": "While wearing this hat, you can use an action to cast the Disguise Self spell from it at will. The spell ends if the hat is removed.",
+      "cost": "200",
+      "rarityId": "2",
+      "id": 15
+    },
+    {
+      "name": "Ring of Jumping",
+      "description": "While wearing this ring, you can cast the Jump spell from it as a bonus action at will, but can target only yourself when you do so.",
+      "cost": "225",
+      "rarityId": "2",
+      "id": 16
+    },
+    {
+      "name": "Wand of Secrets",
+      "description": "The wand has 3 charges. While holding it, you can use an action to expend 1 of its charges, and if a secret door or trap is within 30 feet of you, the wand pulses and points at the one nearest to you. The wand regains 1d3 expended charges daily at dawn.",
+      "cost": "500",
+      "rarityId": "2",
+      "id": 17
+    },
+    {
+      "name": "Bow of Conlagration",
+      "description": "Ammunition fired from this bow blazes brightly. When you hit with an attack roll using this bow, the target takes an extra 1d6 fire damage. If the target is a flammable, nonmagical object, it catches fire, taking 1d6 fire damage at the start of each of your turns until a creature uses an action to extinguish the flames.",
+      "cost": "750",
+      "rarityId": "3",
+      "id": 18
+    },
+    {
+      "name": "Bracers of Flying Daggers",
+      "description": "This armband appears to have thin daggers strapped to it. As an action, you can pull up to two magic daggers from the bracer and immediately hurl them, making a ranged attack with each dagger. A dagger vanishes if you don't hurl it right away, and the daggers disappear right after they hit or miss. The bracer never runs out of daggers.",
+      "cost": "800",
+      "rarityId": "3",
+      "id": 19
+    },
+    {
+      "name": "Elven Chain",
+      "description": "You gain a +1 bonus to AC while you wear this armor. You are considered proficient with this armor even if you lack proficiency with medium armor.",
+      "cost": "600",
+      "rarityId": "3",
+      "id": 20
+    },
+    {
+      "name": "Woodcutter's Axe",
+      "description": "You have a +1 bonus to attack and damage rolls made with this magic weapon.  When you use this axe to make an attack against a plant (an ordinary plant or a creature with the Plant type) or a wooden object that isn't being worn or carried, the attack deals an extra 2d6 slashing damage on a hit.",
+      "cost": "1000",
+      "rarityId": "3",
+      "id": 21
+    },
+    {
+      "name": "Potion of Vitality",
+      "id": 22,
+      "description": "When you drink this potion, it removes any exhaustion you are suffering and cures any disease or poison affecting you. For the next 24 hours, you regain the maximum number of hit points for any Hit Die you spend. The potion's crimson liquid regularly pulses with dull light, calling to mind a heartbeat.",
+      "cost": "597",
+      "rarityId": "4",
+      "purchased": false
+    },
+    {
+      "name": "Oil of Sharpness",
+      "description": "This clear, gelatinous oil sparkles with tiny, ultrathin silver shards. The oil can coat one slashing or piercing weapon or up to 5 pieces of slashing or piercing ammunition. Applying the oil takes 1 minute. For 1 hour, the coated item is magical and has a +3 bonus to attack and damage rolls.",
+      "cost": "600",
+      "rarityId": "4",
+      "id": 23
+    },
+    {
+      "name": "Clockwork Armor",
+      "description": "The outside surface and internal joints of this armor whir with interlocking gears, drawing on the orderly magic of the plane of Mechanus.  The armor has 4 charges. If you make a d20 roll while wearing this armor, you can expend 1 charge to change the number rolled to a 10. The armor regains 1d4 expended charges daily at dawn.",
+      "cost": "1247",
+      "rarityId": "4",
+      "id": 24
+    },
+    {
+      "name": "Blast Scepter",
+      "description": "The Blast Scepter can be used as an arcane focus.  Whoever is attuned to the Blast Scepter gains resistance to fire and lightning damage and can, as an action, use it to cast Thunderwave as a 4th level spell (save DC 16) without expending a spell slot.",
+      "cost": "999",
+      "rarityId": "4",
+      "id": 25
+    },
+    {
+      "name": "Vorpal Sword",
+      "description": "You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.  When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra 6d8 slashing damage from the hit.",
+      "cost": "4998",
+      "rarityId": "5",
+      "id": 26
+    },
+    {
+      "name": "Hither-Thither Staff",
+      "description": "This walking stick has a brilliant gemstone fitted at the top. This staff has 4 charges and regains 1d4 expended charges daily at dawn.  As an action, you can expend 1 charge from the staff to create two linked teleportation portals, each one appearing on a flat surface of your choice that you can see within 1,500 feet of yourself. Alternatively, you can expend 1 charge as an action to relocate one or both portals, subject to the same limitation. The surface on which a portal appears must be big enough to accommodate it. Each portal is a two-dimensional, glowing oval ring, and together they create an open doorway up to 6 feet high and 4 feet wide. Any creature or object entering one portal exits from the other as if the two portals were a single opening that connects their locations.  A portal can appear on a moving surface, but the effect ends when the two portals move more than 1 mile apart. As a bonus action while holding the staff, you can close both portals (ending the effect) or suppress one portal, causing it to disappear until you relocate it (see above), during which time the remaining portal can’t be used. The portals otherwise last for 24 hours.",
+      "cost": "5250",
+      "rarityId": "5",
+      "id": 27
+    },
+    {
+      "name": "Dragonlance",
+      "description": "A dragonlance is a renowned weapon forged from rare metal with the aid of powerful artifacts. On Krynn, its creation is associated with the god Paladine and legendary heroes who fought against the evil of the Dragon Queen. Different lances are forged for use by foot soldiers (as pikes) and by riders (as lances), but the magical properties of the weapons are the same.  You gain a +3 bonus to attack and damage rolls made with this magic weapon.  When you hit a Dragon with this weapon, the Dragon takes an extra 3d6 force damage, and any Dragon of your choice that you can see within 30 feet of you can immediately use its reaction to make a melee attack.",
+      "cost": "6000",
+      "rarityId": "5",
+      "id": 28
+    },
+    {
+      "name": "Fire Resistance Potion",
+      "description": "Fire Resistant",
+      "cost": "25",
+      "rarityId": "1",
+      "id": 29
     }
   ],
   "rarities": [
@@ -85,6 +262,353 @@
     {
       "id": 5,
       "name": "Legendary"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "Armor"
+    },
+    {
+      "id": 2,
+      "name": "Weapon"
+    },
+    {
+      "id": 3,
+      "name": "Potion"
+    },
+    {
+      "id": 4,
+      "name": "Scroll"
+    },
+    {
+      "id": 5,
+      "name": "Light Armor"
+    },
+    {
+      "id": 6,
+      "name": "Medium Armor"
+    },
+    {
+      "id": 7,
+      "name": "Heavy Armor"
+    },
+    {
+      "id": 8,
+      "name": "Robes"
+    },
+    {
+      "id": 9,
+      "name": "Martial Weapon"
+    },
+    {
+      "id": 10,
+      "name": "Simple Weapon"
+    },
+    {
+      "id": 11,
+      "name": "Ranged Weapon"
+    },
+    {
+      "id": 12,
+      "name": "Staff"
+    },
+    {
+      "id": 13,
+      "name": "Attuned"
+    },
+    {
+      "id": 14,
+      "name": "Ring"
+    },
+    {
+      "id": 15,
+      "name": "Rod"
+    }
+  ],
+  "itemTags": [
+    {
+      "tagId": 3,
+      "itemId": 2,
+      "id": 4
+    },
+    {
+      "tagId": 3,
+      "itemId": 3,
+      "id": 5
+    },
+    {
+      "tagId": 3,
+      "itemId": 4,
+      "id": 6
+    },
+    {
+      "tagId": 3,
+      "itemId": 5,
+      "id": 7
+    },
+    {
+      "tagId": 1,
+      "itemId": 6,
+      "id": 8
+    },
+    {
+      "tagId": 6,
+      "itemId": 6,
+      "id": 9
+    },
+    {
+      "tagId": 7,
+      "itemId": 6,
+      "id": 10
+    },
+    {
+      "tagId": 1,
+      "itemId": 7,
+      "id": 11
+    },
+    {
+      "tagId": 13,
+      "itemId": 7,
+      "id": 12
+    },
+    {
+      "tagId": 1,
+      "itemId": 8,
+      "id": 13
+    },
+    {
+      "tagId": 1,
+      "itemId": 9,
+      "id": 14
+    },
+    {
+      "tagId": 5,
+      "itemId": 9,
+      "id": 15
+    },
+    {
+      "tagId": 1,
+      "itemId": 11,
+      "id": 16
+    },
+    {
+      "tagId": 1,
+      "itemId": 13,
+      "id": 17
+    },
+    {
+      "tagId": 13,
+      "itemId": 13,
+      "id": 18
+    },
+    {
+      "tagId": 1,
+      "itemId": 14,
+      "id": 19
+    },
+    {
+      "tagId": 1,
+      "itemId": 15,
+      "id": 20
+    },
+    {
+      "tagId": 1,
+      "itemId": 16,
+      "id": 21
+    },
+    {
+      "tagId": 14,
+      "itemId": 16,
+      "id": 22
+    },
+    {
+      "tagId": 13,
+      "itemId": 16,
+      "id": 23
+    },
+    {
+      "tagId": 12,
+      "itemId": 17,
+      "id": 24
+    },
+    {
+      "tagId": 2,
+      "itemId": 18,
+      "id": 25
+    },
+    {
+      "tagId": 11,
+      "itemId": 18,
+      "id": 26
+    },
+    {
+      "tagId": 13,
+      "itemId": 18,
+      "id": 27
+    },
+    {
+      "tagId": 1,
+      "itemId": 19,
+      "id": 28
+    },
+    {
+      "tagId": 13,
+      "itemId": 19,
+      "id": 29
+    },
+    {
+      "tagId": 1,
+      "itemId": 20,
+      "id": 30
+    },
+    {
+      "tagId": 6,
+      "itemId": 20,
+      "id": 31
+    },
+    {
+      "tagId": 2,
+      "itemId": 21,
+      "id": 32
+    },
+    {
+      "tagId": 9,
+      "itemId": 21,
+      "id": 33
+    },
+    {
+      "tagId": 3,
+      "itemId": 22,
+      "id": 34
+    },
+    {
+      "tagId": 3,
+      "itemId": 23,
+      "id": 35
+    },
+    {
+      "tagId": 1,
+      "itemId": 24,
+      "id": 36
+    },
+    {
+      "tagId": 13,
+      "itemId": 24,
+      "id": 37
+    },
+    {
+      "tagId": 7,
+      "itemId": 24,
+      "id": 38
+    },
+    {
+      "tagId": 15,
+      "itemId": 25,
+      "id": 39
+    },
+    {
+      "tagId": 13,
+      "itemId": 25,
+      "id": 40
+    },
+    {
+      "tagId": 2,
+      "itemId": 26,
+      "id": 41
+    },
+    {
+      "tagId": 10,
+      "itemId": 26,
+      "id": 42
+    },
+    {
+      "tagId": 9,
+      "itemId": 26,
+      "id": 43
+    },
+    {
+      "tagId": 13,
+      "itemId": 26,
+      "id": 44
+    },
+    {
+      "tagId": 12,
+      "itemId": 27,
+      "id": 45
+    },
+    {
+      "tagId": 2,
+      "itemId": 28,
+      "id": 46
+    },
+    {
+      "tagId": 9,
+      "itemId": 28,
+      "id": 47
+    },
+    {
+      "tagId": 3,
+      "itemId": 29,
+      "id": 48
+    }
+  ],
+  "shopItems": [
+    {
+      "itemId": 2,
+      "rarityId": 1,
+      "name": "Potion of Healing",
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "itemId": 6,
+      "rarityId": 2,
+      "name": "Adamantine Armor",
+      "quantity": 5,
+      "id": 2
+    },
+    {
+      "itemId": 12,
+      "rarityId": 2,
+      "name": "Emerald Pen",
+      "quantity": 2,
+      "id": 3
+    },
+    {
+      "name": "Fire Resistance Potion",
+      "rarityId": "1",
+      "itemId": 29,
+      "quantity": 5,
+      "id": 4
+    }
+  ],
+  "carts": [],
+  "purchasedItems": [
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "itemId": "2",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "itemId": "2",
+      "id": 5
     }
   ]
 }
